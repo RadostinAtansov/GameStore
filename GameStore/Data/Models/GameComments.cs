@@ -7,12 +7,12 @@
     {
         [Key]
         public int GameId { get; set; }
-        [ForeignKey("Game")]
+        //[ForeignKey("Game")]
         public virtual Game Game { get; set; }
 
-        [Key]
+       // [Key]
         public int CommentId { get; set; }
-        [ForeignKey("Comment")]
+       // [ForeignKey("Comment")]
         public virtual Comment Comment { get; set; }
     }
 }

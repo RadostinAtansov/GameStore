@@ -5,7 +5,7 @@
 
     public class Statistic
     {
-        [Key]
+        //[Key]
         public int Id { get; set; }
 
         [Range(typeof(double), MinNumber, MaxNumber)]

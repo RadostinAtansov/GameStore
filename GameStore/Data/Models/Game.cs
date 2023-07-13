@@ -6,7 +6,7 @@
 
     public class Game
     {
-        [Key]
+        //[Key]
         public int Id { get; set; }
 
         [Required(ErrorMessage = MessageRequiredGameName)]
@@ -33,7 +33,7 @@
 
         [Key]
         public int StatisticId { get; set; }
-        [ForeignKey("Statistic")]
+        //[ForeignKey("Statistic")]
         public virtual Statistic Statistic { get; set; }
     }
 }
