@@ -5,7 +5,7 @@
 
     public class Comment
     {
-        //[Key]
+        [Key]
         public int Id { get; set; }
 
         [Required(ErrorMessage = MessageTitleRequired)]

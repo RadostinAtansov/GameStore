@@ -1,4 +1,6 @@
-﻿namespace GameStore.Data
+﻿using Microsoft.EntityFrameworkCore;
+using GameStore.Models.GameViewModels;
+namespace GameStore.Data
 {
     using GameStore.Data.Models;
     using Microsoft.EntityFrameworkCore;
@@ -48,6 +50,13 @@
                 .WithMany(g => g.Games)
                 .HasForeignKey(k => k.StatisticId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            //Game <=> Image one to many
+
+            modelBuilder.Entity<Image>()
+                .HasOne(i => i.Game)
+                .WithMany(g => g.Images)
+                .HasForeignKey(i => i.GameId);
         }
 
         public DbSet<Comment> Comments { get; set; }
@@ -56,5 +65,6 @@
         public DbSet<Statistic> Statistics { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UsersGames> UsersGames { get; set; }
+        public DbSet<Image> Images { get; set; }
     }
 }

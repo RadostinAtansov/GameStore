@@ -6,8 +6,8 @@
         {
             public const string MessageGameName = "Name is between 3 and 20 char symbols";
             public const string MessageRequiredGameName = "Name is required";
-            public const int MaxLengthGameName = 3;
-            public const int MinLengthGameName = 20;
+            public const int MinLengthGameName = 3;
+            public const int MaxLengthGameName = 20;
 
             public const string MessageGameDescription = "Description is between 15 and 150 char symbols";
             public const string MessageRequiredDescriptionName = "Description is required";
@@ -56,6 +56,16 @@
             public const string MessageWhoBoughtThisGame = "WhoBoughtThisGame is between 5 and 50 char symbols";
             public const int MinLengthWhoBoughtThisGame = 5;
             public const int MaxLengthWhoBoughtThisGame = 50;
+        }
+
+        public class ImageDataValidation
+        {
+            public const string MessageRequireImage = "Image name Required";
+            public const string MessageLengthName = "Image name is between 3 to 20 char symbols";
+            public const int MinLengthName = 3;
+            public const int MaxLengthName= 20;
+
+            public const string MessageImageRequire = "Require image";
         }
     }
 }

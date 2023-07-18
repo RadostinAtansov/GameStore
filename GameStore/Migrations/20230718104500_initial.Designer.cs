@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GameStore.Migrations
 {
     [DbContext(typeof(GameStoreDataDbContext))]
-    [Migration("20230713111051_Initial")]
-    partial class Initial
+    [Migration("20230718104500_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,8 +53,11 @@ namespace GameStore.Migrations
 
             modelBuilder.Entity("GameStore.Data.Models.Game", b =>
                 {
-                    b.Property<int>("StatisticId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Category")
                         .IsRequired()
@@ -70,35 +73,76 @@ namespace GameStore.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("StatisticId");
+                    b.Property<int>("StatisticId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("VideoURL")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StatisticId");
 
                     b.ToTable("Games");
                 });
 
             modelBuilder.Entity("GameStore.Data.Models.GameComments", b =>
                 {
-                    b.Property<int>("GameId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CommentId")
                         .HasColumnType("int");
 
-                    b.HasKey("GameId");
+                    b.Property<int>("GameId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("CommentId");
 
+                    b.HasIndex("GameId");
+
                     b.ToTable("GamesComments");
+                });
+
+            modelBuilder.Entity("GameStore.Data.Models.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("GameId")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("ImageData")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GameId");
+
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("GameStore.Data.Models.Statistic", b =>
@@ -109,13 +153,13 @@ namespace GameStore.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<double>("AverageRate")
+                    b.Property<double?>("AverageRate")
                         .HasColumnType("float");
 
-                    b.Property<int>("HowManyTimeIsBoughtThisGame")
+                    b.Property<int?>("HowManyTimeIsBoughtThisGame")
                         .HasColumnType("int");
 
-                    b.Property<int>("Likes")
+                    b.Property<int?>("Likes")
                         .HasColumnType("int");
 
                     b.Property<string>("WhoBoughtThisGame")
@@ -160,13 +204,21 @@ namespace GameStore.Migrations
 
             modelBuilder.Entity("GameStore.Data.Models.UsersGames", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<int>("GameId")
                         .HasColumnType("int");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.HasKey("GameId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("GameId");
 
                     b.HasIndex("UserId");
 
@@ -203,6 +255,17 @@ namespace GameStore.Migrations
                     b.Navigation("Game");
                 });
 
+            modelBuilder.Entity("GameStore.Data.Models.Image", b =>
+                {
+                    b.HasOne("GameStore.Data.Models.Game", "Game")
+                        .WithMany("Images")
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Game");
+                });
+
             modelBuilder.Entity("GameStore.Data.Models.UsersGames", b =>
                 {
                     b.HasOne("GameStore.Data.Models.Game", "Game")
@@ -230,6 +293,8 @@ namespace GameStore.Migrations
             modelBuilder.Entity("GameStore.Data.Models.Game", b =>
                 {
                     b.Navigation("Comments_Game");
+
+                    b.Navigation("Images");
 
                     b.Navigation("Users_Games");
                 });

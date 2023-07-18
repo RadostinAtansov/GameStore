@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GameStore.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,9 +32,9 @@ namespace GameStore.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AverageRate = table.Column<double>(type: "float", nullable: false),
-                    Likes = table.Column<int>(type: "int", nullable: false),
-                    HowManyTimeIsBoughtThisGame = table.Column<int>(type: "int", nullable: false),
+                    AverageRate = table.Column<double>(type: "float", nullable: true),
+                    Likes = table.Column<int>(type: "int", nullable: true),
+                    HowManyTimeIsBoughtThisGame = table.Column<int>(type: "int", nullable: true),
                     WhoBoughtThisGame = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
@@ -62,17 +62,19 @@ namespace GameStore.Migrations
                 name: "Games",
                 columns: table => new
                 {
-                    StatisticId = table.Column<int>(type: "int", nullable: false),
-                    Id = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     Category = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Company = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)
+                    Company = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    VideoURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StatisticId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Games", x => x.StatisticId);
+                    table.PrimaryKey("PK_Games", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Games_Statistics_StatisticId",
                         column: x => x.StatisticId,
@@ -85,12 +87,14 @@ namespace GameStore.Migrations
                 name: "GamesComments",
                 columns: table => new
                 {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     GameId = table.Column<int>(type: "int", nullable: false),
                     CommentId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GamesComments", x => x.GameId);
+                    table.PrimaryKey("PK_GamesComments", x => x.Id);
                     table.ForeignKey(
                         name: "FK_GamesComments_Comments_CommentId",
                         column: x => x.CommentId,
@@ -101,7 +105,28 @@ namespace GameStore.Migrations
                         name: "FK_GamesComments_Games_GameId",
                         column: x => x.GameId,
                         principalTable: "Games",
-                        principalColumn: "StatisticId",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Images",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    ImageData = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
+                    GameId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Images", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Images_Games_GameId",
+                        column: x => x.GameId,
+                        principalTable: "Games",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -109,17 +134,19 @@ namespace GameStore.Migrations
                 name: "UsersGames",
                 columns: table => new
                 {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     GameId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UsersGames", x => x.GameId);
+                    table.PrimaryKey("PK_UsersGames", x => x.Id);
                     table.ForeignKey(
                         name: "FK_UsersGames_Games_GameId",
                         column: x => x.GameId,
                         principalTable: "Games",
-                        principalColumn: "StatisticId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_UsersGames_Users_UserId",
@@ -130,9 +157,29 @@ namespace GameStore.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Games_StatisticId",
+                table: "Games",
+                column: "StatisticId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_GamesComments_CommentId",
                 table: "GamesComments",
                 column: "CommentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_GamesComments_GameId",
+                table: "GamesComments",
+                column: "GameId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Images_GameId",
+                table: "Images",
+                column: "GameId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UsersGames_GameId",
+                table: "UsersGames",
+                column: "GameId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UsersGames_UserId",
@@ -145,6 +192,9 @@ namespace GameStore.Migrations
         {
             migrationBuilder.DropTable(
                 name: "GamesComments");
+
+            migrationBuilder.DropTable(
+                name: "Images");
 
             migrationBuilder.DropTable(
                 name: "UsersGames");

@@ -1,5 +1,9 @@
 using GameStore.Data;
+using GameStore.Data.Services;
+using GameStore.Data.Services.Interfaces;
+
 using Microsoft.EntityFrameworkCore;
+using RestEase.HttpClientFactory;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +14,8 @@ builder.Services.AddDbContext<GameStoreDataDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
+builder.Services.AddTransient<IGameService, GameService>();
 
 var app = builder.Build();
 

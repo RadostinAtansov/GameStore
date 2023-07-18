@@ -5,21 +5,21 @@
 
     public class Statistic
     {
-        //[Key]
+        [Key]
         public int Id { get; set; }
 
         [Range(typeof(double), MinNumber, MaxNumber)]
-        public double AverageRate { get; set; }
+        public double? AverageRate { get; set; }
 
         [Range(typeof(int), MinNumber, MaxNumber)]
-        public int Likes { get; set; }
+        public int? Likes { get; set; }
 
         [Range(typeof(int), MinNumber, MaxNumber)]
-        public int HowManyTimeIsBoughtThisGame { get; set; }
+        public int? HowManyTimeIsBoughtThisGame { get; set; }
 
         [Required(ErrorMessage = MessageWhoBoughtThisGameRequired)]
         [StringLength(MaxLengthWhoBoughtThisGame, MinimumLength = MinLengthWhoBoughtThisGame, ErrorMessage = MessageWhoBoughtThisGame)]
-        public string WhoBoughtThisGame { get; set; }
+        public string WhoBoughtThisGame { get; set; } = string.Empty;
 
         public virtual ICollection<Game> Games { get; set; }
     }

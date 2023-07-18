@@ -1,12 +1,11 @@
 ﻿namespace GameStore.Data.Models
 {
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
     using static DataValidation.GameDataValidation;
 
     public class Game
     {
-        //[Key]
+        [Key]
         public int Id { get; set; }
 
         [Required(ErrorMessage = MessageRequiredGameName)]
@@ -28,12 +27,14 @@
         [Required(ErrorMessage = MessageRequiredCompanyName)]
         public string Company { get; set; }
 
+        [Url]
+        public string VideoURL { get; set; }
+
         public virtual ICollection<UsersGames> Users_Games{ get; set; }
         public virtual ICollection<GameComments> Comments_Game{ get; set; }
+        public virtual ICollection<Image> Images { get; set; }
 
-        [Key]
         public int StatisticId { get; set; }
-        //[ForeignKey("Statistic")]
         public virtual Statistic Statistic { get; set; }
     }
 }
