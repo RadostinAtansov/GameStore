@@ -66,5 +66,6 @@ namespace GameStore.Data
         public DbSet<User> Users { get; set; }
         public DbSet<UsersGames> UsersGames { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<GameStore.Models.GameViewModels.ReturnAllGames>? ReturnAllGames { get; set; }
     }
 }

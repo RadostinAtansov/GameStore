@@ -1,0 +1,119 @@
+﻿@model IEnumerable<GamesIGDBViewModel>
+
+@{
+    ViewData["Title"] = "ReturnAllGames";
+}
+
+<h1>ReturnAllGames</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>          
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Summary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Images)
+            </th>
+           @*<th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AggregatedRatingCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Checksum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Follows)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hypes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RatingCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Slug)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Storyline)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tags)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VersionTitle)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>       
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Summary)
+            </td>
+          <td>
+                @foreach (var image in item.Images)
+                {
+                    <img src= "@Url.Content(image.Url)" width="200" />
+                }
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AggregatedRatingCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Checksum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Follows)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hypes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RatingCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Slug)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Storyline)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tags)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VersionTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Screenshots)
+             </td>*@
+            <td>
+                <a asp-action="Edit" asp-route-id="">Edit</a> |
+                <a asp-action="Details" asp-route-id="">Details</a> |
+                <a asp-action="Delete" asp-route-id="">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

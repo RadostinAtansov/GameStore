@@ -1,6 +1,7 @@
 ﻿namespace GameStore.Data.Services.Interfaces
 {
     using GameStore.Models.GameViewModels;
+    using GameStore.Models.IGDB;
 
     public interface IGameService
     {
@@ -8,6 +9,6 @@
         Task AddGame(AddGameViewModel game);
         Task RemoveGame(AddGameViewModel game);
         Task UpdateGame(AddGameViewModel game);
-        Task<List<AddGameViewModel>> GetAllGames();
+        Task<List<GamesIGDBViewModel>> GetAllGames();
     }
 }

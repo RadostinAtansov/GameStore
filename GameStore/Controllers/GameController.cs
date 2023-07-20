@@ -26,7 +26,7 @@
                 return View(game);
             }
             await _gameService.AddGame(game);
-            return RedirectToAction("Home");
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
