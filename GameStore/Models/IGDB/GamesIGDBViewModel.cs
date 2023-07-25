@@ -7,22 +7,24 @@ namespace GameStore.Models.IGDB
     public class GamesIGDBViewModel
     {
 
+        public long Id { get; set; }
+
         [DisplayName("Game Name")]
         public string Name { get; set; }
 
         [DisplayName("Desription")]
         public string Summary { get; set; }
 
-        public List<IGDBImages> Images = new List<IGDBImages>();
+        public string Storyline { get; set; }
+
+        public List<int> Screenshots = new List<int>();
+
+        public IGDBImages Images { get; set; }
     }
 
     public class IGDBImages
     {
         [DisplayName("Screenshots")]
         public string Url { get; set; }
-
-        public int Hight { get; set; }
-
-        public int Width { get; set; }
     }
 }

@@ -22,50 +22,47 @@
 
         public async Task AddGame(AddGameViewModel game)
         {
-            // var addgame = _mapper.Map<Game>(game);
-
-            //var gameAdd = new Game()
-            //{
-            //    Id = game.Id,
-            //    Name = game.Name,
-            //    Category = game.Category,
-            //    Price = game.Price,
-            //    Company = game.Company,
-            //    VideoURL = game.VideoURL,
-            //    Description = game.Description,
-            //    Statistic = new Statistic()
-            //    {
-            //        Id = game.Id,
-            //    }
-            //};
-
-            //await _dbContext.Games.AddAsync(gameAdd);
-            //await _dbContext.SaveChangesAsync();
+            throw new NotImplementedException();
         }
 
         public async Task<List<GamesIGDBViewModel>> GetAllGames()
         {
             var igdb = new IGDBClient("dhs4qgav57pw3ry6ts1dhfgn5t33c0", "15yjgjhviddv2qppk5h7911ko33pbd");
 
-            var igdbInfo = await igdb.QueryAsync<GamesIGDBViewModel>(IGDBClient.Endpoints.Games, query: "fields *; limit 10;");
-            var igdbImages = await igdb.QueryAsync<IGDBImages>(IGDBClient.Endpoints.Screenshots, query: "fields *; limit 10;");
+            //var model = IGDB.Models.Game();
 
-
-
+            var igdbInfo = await igdb.QueryAsync<GamesIGDBViewModel>(IGDBClient.Endpoints.Games, query: "fields name, summary, screenshots; limit 10;");
             List<GamesIGDBViewModel> games = igdbInfo.ToList();
-            List<IGDBImages> images = igdbImages.ToList();
 
             for (int i = 0; i < games.Count; i++)
             {
-                games[i].Images.Add(images[i]);
+                var game = games[i];
+                var arr = game.Screenshots;
+                if (arr.Count == 0)
+                {
+                    games.Remove(game);
+                    i--;
+                }
+                else
+                {
+                    //var igdbImages = await igdb.QueryAsync<IGDBImages>(IGDBClient.Endpoints.Screenshots, query: $"fields *; where id = ({string.Join(',', arr)});");
+                    var igdbImages = await igdb.QueryAsync<IGDBImages>(IGDBClient.Endpoints.Screenshots, query: $"fields url; where id = ({arr[0]});");
+                    game.Images = igdbImages[0];
+                }
             }
 
             return games;
         }
 
-        public Task GetGameById(int id)
+        public async Task<DetailsViewModel> GetDetails(int id)
         {
-            throw new NotImplementedException();
+            var igdb = new IGDBClient("dhs4qgav57pw3ry6ts1dhfgn5t33c0", "15yjgjhviddv2qppk5h7911ko33pbd");
+
+            var igdbInfo = await igdb.QueryAsync<DetailsViewModel>(IGDBClient.Endpoints.Games, query: $"fields *; where id = { id }; limit 10;");
+
+            var details = igdbInfo.ToList()[0];
+
+            return details;
         }
 
         public Task RemoveGame(AddGameViewModel game)

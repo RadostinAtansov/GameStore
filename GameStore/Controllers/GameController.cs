@@ -35,5 +35,13 @@
             var allGames = await _gameService.GetAllGames();
             return View(allGames);
         }
+
+        //[HttpGet("game-details/{id}")]
+        public async Task<IActionResult> Details(int id)
+        {
+            var game = await _gameService.GetDetails(id);
+
+            return View();
+        }
     }
 }

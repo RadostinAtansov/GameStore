@@ -5,7 +5,7 @@
 
     public interface IGameService
     {
-        Task GetGameById(int id);
+        Task<DetailsViewModel> GetDetails(int id);
         Task AddGame(AddGameViewModel game);
         Task RemoveGame(AddGameViewModel game);
         Task UpdateGame(AddGameViewModel game);
