@@ -41,7 +41,7 @@
         {
             var game = await _gameService.GetDetails(id);
 
-            return View();
+            return View(game);
         }
     }
 }

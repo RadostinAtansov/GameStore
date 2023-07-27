@@ -1,4 +1,7 @@
-﻿namespace GameStore.Models.IGDB
+﻿using IGDB.Models;
+using System.ComponentModel;
+
+namespace GameStore.Models.IGDB
 {
     public class DetailsViewModel
     {
@@ -8,34 +11,101 @@
 
         public string Summary { get; set; }
 
-        public List<int> Screenshots = new List<int>();
+        public List<int>? Screenshots = new();
+        public List<IGDBImagesDetails>? Images = new();
 
-        public List<int> Artworks = new List<int>();
+        public List<int> GameModes = new();
+        public List<IGDBGameModeDetails> GameModesInfo = new();
 
-        public int Cover { get; set; }
+        public int? Cover { get; set; }
+        public IGDBCoverDetails? CoverInfo { get; set; }
 
-        public int Collection { get; set; }
+        public List<int> Genres = new();
+        public List<IGDBGenreDetails> GenresInfo = new();
 
-        public List<int> GameEngines = new List<int>();
+        public List<int> MultiplayerModes = new();
 
-        public List<int> GameModes = new List<int>();
+        public List<int> Platforms = new();
+        public List<IGDBPlatformsDetails> PlatformsInfo = new();
 
-        public List<int> Genres = new List<int>();
+        public List<int> Websites = new();
+        public List<IGDBWebSiteDetails> WebsitesInfo = new();
 
-        public List<int> InvolvedCompanies = new List<int>();
+        public List<int> Videos = new();
 
-        public List<int> MultiplayerModes = new List<int>();
+        public List<int> ReleaseDates = new();
 
-        public List<int> Platforms = new List<int>();
 
-        public List<int> PlayerPerspectives = new List<int>();
+        public List<int> GameEngines = new();
+    }
 
-        public List<int> Themes = new List<int>();
+    public class IGDBImagesDetails
+    {
+        [DisplayName("Screenshots")]
+        public string Url { get; set; }
+    }
 
-        public List<int> Videos = new List<int>();
+    public class IGDBEngineDetails
+    {
+        public string Name { get; set; }
+    }
 
-        public List<int> ReleaseDates = new List<int>();
+    public class IGDBGameModeDetails
+    {
+        public string Name { get; set; }
 
-        public List<int> Websites = new List<int>();
+        public string Url { get; set; }
+    }
+
+    public class IGDBGenreDetails
+    {
+        public string Name { get; set; }
+
+        public string Url { get; set; }
+    }
+
+    public class IGDBPlatformsDetails
+    {
+        public string Name { get; set; }
+
+        public string Url { get; set; }
+    }
+
+    public class IGDBVideosDetails
+    {
+        public string Url { get; set; }
+    }
+
+    public class IGDBReleaseDateDetails
+    {
+        public string Url { get; set; }
+    }
+
+    public class IGDBWebSiteDetails
+    {
+        public WebsiteCategory Category { get; set; }
+
+        public string Url { get; set; }
+
+        public enum WebsiteCategory
+        {
+            Official = 1,
+            Wikia = 2,
+            Wikipedia = 3,
+            Facebook = 4,
+            Twitter = 5,
+            Twitch = 6,
+            Instagram = 8,
+            YouTube = 9,
+            iPhone = 10,
+            iPad = 11,
+            Android = 12,
+            Steam = 13,
+            Reddit = 14,
+            Itch = 15,
+            EpicGames = 16,
+            GOG = 17,
+            Discord = 18
+        }
     }
 }

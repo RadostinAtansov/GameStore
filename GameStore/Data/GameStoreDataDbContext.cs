@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using GameStore.Models.GameViewModels;
+using GameStore.Models.IGDB;
 namespace GameStore.Data
 {
     using GameStore.Data.Models;
@@ -66,5 +67,6 @@ namespace GameStore.Data
         public DbSet<User> Users { get; set; }
         public DbSet<UsersGames> UsersGames { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<GameStore.Models.IGDB.DetailsViewModel>? DetailsViewModel { get; set; }
     }
 }

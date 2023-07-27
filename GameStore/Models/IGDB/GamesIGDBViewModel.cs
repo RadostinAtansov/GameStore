@@ -12,6 +12,9 @@ namespace GameStore.Models.IGDB
         [DisplayName("Game Name")]
         public string Name { get; set; }
 
+        public int? Cover { get; set; }
+        public IGDBCoverDetails? CoverUrl { get; set; }
+
         [DisplayName("Desription")]
         public string Summary { get; set; }
 
@@ -23,6 +26,12 @@ namespace GameStore.Models.IGDB
     }
 
     public class IGDBImages
+    {
+        [DisplayName("Screenshots")]
+        public string Url { get; set; }
+    }
+
+    public class IGDBCoverDetails
     {
         [DisplayName("Screenshots")]
         public string Url { get; set; }

@@ -20,16 +20,12 @@
                         <div class="col-md-4">
                             <div class="card mb-3 box-shadow">
                                 <h3 style="text-align: center;">@game.Name</h3>
-                                <img src= "@game.Images.Url" width: 50%; margin-left: auto; margin-right: auto; display: block;/>
+                                <img src= "@game.CoverUrl.Url" width: 30%; margin-left: auto; margin-right: auto; display: block;/>
                                 <div class="card-body">
-                                    <p class="card-text"><strong>Summary:</strong> <br /> @game.Id</p>
                                     <p class="card-text"><strong>Summary:</strong> <br /> @game.Summary</p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
-
-                                            @*@Html.ActionLink("Details", "Details", "Game", new object {}, new { @class = "btn btn-outline-info" })*@
-                                            <button class="btn btn-outline-info"> <a asp-controller="Game" asp-action="Details" asp-route-id="@game.Id">Details</a></button>
-                                        
+                                            <button class="btn btn-outline-info"> <a asp-controller="Game" asp-action="Details" asp-route-id="@game.Id">Details</a></button>                                       
                                             <button type="button" class="btn btn-outline-warning">Edit</button>
                                             <button type="button" class="btn btn-outline-danger">Delete</button>
                                         </div>
