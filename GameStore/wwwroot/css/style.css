@@ -1,0 +1,39 @@
+﻿
+
+.for_slick_slider {
+    display: flex;
+}
+
+.imgClass{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.items {
+    width: 350px;
+    height: 250px;
+    margin: 50px;
+}
+
+.items .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 350px;
+    height: 250px;
+    background: rgba(0, 0, 0, 0.64);
+}
+
+.for_slick_slider .slick-center .overlay {
+    opacity: 0;
+}
+
+img {
+    width: 350px;
+    height: 150px;
+    transition: all linear .4s;
+}
+
+.for_slick_slider .slick-center img{
+    transform: scale(1.2);
+}
