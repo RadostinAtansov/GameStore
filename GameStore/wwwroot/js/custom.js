@@ -30,14 +30,3 @@ $('.center').slick({
     //    }
     //]
 });
-
-//$('.multiple-items').slick({
-//   centerMode: true,
-//   centerPadding: '0',
-//   slidesToShow: 3,
-//   arrows: true,
-//   centerMode:true,
-//   infinite: true,
-//   slidesToScroll: 1,
-//    });
-//};

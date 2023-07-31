@@ -1,4 +1,16 @@
 ﻿
+/*body {
+    background-color: red;
+}*/
+
+.textL {
+    overflow: hidden; /* ✔️ Required for ellipsis to appear */
+    text-align: center;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* ✔️ Required for ellipsis to appear */
+    display: inline-block;
+}
 
 .for_slick_slider {
     display: flex;
@@ -29,11 +41,11 @@
 }
 
 img {
-    width: 350px;
+    width: 100%;
     height: 150px;
     transition: all linear .4s;
 }
 
-.for_slick_slider .slick-center img{
+.for_slick_slider .slick-center .card{
     transform: scale(1.2);
 }

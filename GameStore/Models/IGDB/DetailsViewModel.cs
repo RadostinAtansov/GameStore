@@ -90,7 +90,7 @@ namespace GameStore.Models.IGDB
         public enum WebsiteCategory
         {
             Official = 1,
-            Wikia = 2,
+            Wiki = 2,
             Wikipedia = 3,
             Facebook = 4,
             Twitter = 5,

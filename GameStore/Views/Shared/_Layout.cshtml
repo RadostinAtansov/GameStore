@@ -19,7 +19,10 @@
                     <a class="navbar-brand" href="#">Game Store</a>
                 </div>
                 <ul class="navbar-nav flex-grow-1">
-                    <li class="active"><a class="nav-link text-white" href="#">Home</a></li>
+                    
+                    <li> 
+                        <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
                     <li class="dropdown">
                         <a class="nav-link text-white" class="dropdown-toggle" data-toggle="dropdown" href="#">Categories <span class="caret"></span></a>
                         <ul class="dropdown-menu" style="background-color: black">
@@ -57,7 +60,6 @@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
-            
         </main>
     </div>
 

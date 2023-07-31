@@ -1,4 +1,5 @@
-﻿using GameStore.Models;
+﻿using GameStore.Data.Services.Interfaces;
+using GameStore.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,15 +8,20 @@ namespace GameStore.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IHomeService _homeService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IHomeService homeService)
         {
+            _homeService = homeService;
             _logger = logger;
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var games = await _homeService.ReturnInfoFromIGDB();
+
+            return View(games);
         }
 
         public IActionResult Privacy()

@@ -1,9 +1,8 @@
-﻿using IGDB.Models;
-using Newtonsoft.Json;
-using System.ComponentModel;
-
+﻿    
 namespace GameStore.Models.IGDB
 {
+    using System.ComponentModel;
+
     public class GamesIGDBViewModel
     {
 
@@ -27,13 +26,11 @@ namespace GameStore.Models.IGDB
 
     public class IGDBImages
     {
-        [DisplayName("Screenshots")]
         public string Url { get; set; }
     }
 
     public class IGDBCoverDetails
     {
-        [DisplayName("Screenshots")]
         public string Url { get; set; }
     }
 }

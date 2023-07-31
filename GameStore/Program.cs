@@ -16,6 +16,7 @@ builder.Services.AddDbContext<GameStoreDataDbContext>(options =>
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 builder.Services.AddTransient<IGameService, GameService>();
+builder.Services.AddTransient<IHomeService, HomeService>();
 
 var app = builder.Build();
 

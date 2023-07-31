@@ -1,18 +1,15 @@
 ﻿namespace GameStore.Data.Services
 {
-    using AutoMapper;
-    using GameStore.Data.Services.Interfaces;
-    using GameStore.Models.GameViewModels;
-    using GameStore.Data.Models;
     using IGDB;
+    using AutoMapper;
     using GameStore.Models.IGDB;
-    using IGDB.Models;
+    using GameStore.Models.GameViewModels;
+    using GameStore.Data.Services.Interfaces;
 
     public class GameService : IGameService
     {
         private readonly GameStoreDataDbContext _dbContext;
         private readonly IMapper _mapper;
-
 
         public GameService(GameStoreDataDbContext dbContext, IMapper mapper)
         {
@@ -66,6 +63,7 @@
             var details = igdbInfo.ToList()[0];
 
             var cover = await igdb.QueryAsync<IGDBCoverDetails>(IGDBClient.Endpoints.Covers, query: $"fields url; where id = ({string.Join(", ", details.Cover)});");
+
             var images = await igdb.QueryAsync<IGDBImagesDetails>(IGDBClient.Endpoints.Screenshots, query: $"fields url; where id = ({ string.Join(", ", details.Screenshots)});");
             var genres = await igdb.QueryAsync<IGDBGenreDetails>(IGDBClient.Endpoints.Genres, query: $"fields name, url; where id = ({string.Join(", ", details.Genres)});");
             var platform = await igdb.QueryAsync<IGDBPlatformsDetails>(IGDBClient.Endpoints.Platforms, query: $"fields name, url; where id = ({string.Join(", ", details.Platforms)});");
