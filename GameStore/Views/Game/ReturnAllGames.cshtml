@@ -4,39 +4,56 @@
     ViewData["Title"] = "ReturnAllGames";
 }
 
-<h1>All Games</h1>
+<h1 style="text-decoration: solid underline black 4px; text-underline-offset: 0.2em; width:200px;">All Games</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-        </tr>
-    </thead>
-    <tbody>   
-           <div class="album py-5 bg-light">
-               <div class="container">
-                   <div class="row">
-                   @foreach (var game in Model)
-                   {
-                        <div class="col-md-4">
-                            <div class="card mb-3 box-shadow">
-                                <h3 style="text-align: center;">@game.Name</h3>
-                                <img src= "@game.CoverUrl.Url" width: 30%; margin-left: auto; margin-right: auto; display: block;/>
-                                <div class="card-body">
-                                    <p class="card-text"><strong>Summary:</strong> <br /> @game.Summary</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button class="btn btn-outline-info"> <a asp-controller="Game" asp-action="Details" asp-route-id="@game.Id">Details</a></button>                                       
-                                            <button type="button" class="btn btn-outline-warning">Edit</button>
-                                            <button type="button" class="btn btn-outline-danger">Delete</button>
-                                        </div>
-                                        <small class="text-body-secondary">30% off</small>
-                                    </div>
-                                </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/cardReturnAll.css">
+    <link rel="stylesheet" href="~/css/searchBar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="topnav">
+        <a class="active" href="#home">Top rated</a>
+        <a class="help" href="#help">Comming soon</a>
+        <a href="#about">Recently Released</a>
+        <a href="#contact">Most anticipated</a>
+        <div class="search-container">
+            <form action="/action_page.php">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+    <div class="courses-container">
+       @foreach (var game in Model)
+        {
+            <div class="card">
+                <a href="javasscript:void();">
+                    <div class="category">@game.GenresInfo[0].Name</div>
+                    <img src="@game.CoverUrl.Url" />
+                    <h2 class="title">@game.Name</h2>
+                    <div class="description">@game.Summary</div>
+                    <div class="info">
+                        <div class="platforms">
+                            @foreach (var platform in game.PlatformsInfo)
+                            {
+                                @platform.Name 
+                                <br />
+                            }
                             </div>
+                        <div class="duration">
+                            <div class="time-icon">@game.Rating</div>
                         </div>
-                   }
-                   </div>
-               </div>
-           </div>
-    </tbody>
-</table>
+                    </div>
+                </a>
+            </div>
+        }      
+    </div>
+</body>
+</html>

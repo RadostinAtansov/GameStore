@@ -28,7 +28,8 @@
 
             //var model = IGDB.Models.Game();
 
-            var igdbInfo = await igdb.QueryAsync<GamesIGDBViewModel>(IGDBClient.Endpoints.Games, query: "fields name, summary, screenshots, cover; limit 10;");
+            var igdbInfo = await igdb.QueryAsync<GamesIGDBViewModel>(IGDBClient.Endpoints.Games, query: "fields name, summary, screenshots, cover, genres, rating, platforms; where rating > 0 & platforms != 0 & cover != 0; limit 1;");
+
             var games = igdbInfo.ToList();
 
 
@@ -37,8 +38,16 @@
                 var game = games[i];
                 var arrCover = game.Cover;
                 var arrScreenshots = game.Screenshots;
+                var arrGenres = game.Genres;
+                var arrPlatforms = game.Platforms;
 
-                if (arrCover == null || arrScreenshots.Count == 0)
+                int rating = Convert.ToInt32(game.Rating);
+                game.Rating = rating;
+
+                if (arrCover == null || 
+                    arrScreenshots.Count == 0 || 
+                    arrGenres.Count == 0 ||
+                    arrPlatforms.Count == 0)
                 {
                     games.Remove(game);
                     i--;
@@ -46,8 +55,12 @@
                 else
                 {
                     var cover = await igdb.QueryAsync<IGDBCoverDetails>(IGDBClient.Endpoints.Covers, query: $"fields url; where id = ({string.Join(", ", game.Cover)});");
+                    var genres = await igdb.QueryAsync<IGDBGenre>(IGDBClient.Endpoints.Genres, query: $"fields name; where id = ({string.Join(", ", game.Genres)});");
+                    var platform = await igdb.QueryAsync<IGDBPlatformsDetails>(IGDBClient.Endpoints.Platforms, query: $"fields name, url; where id = ({string.Join(", ", game.Platforms)});");
 
                     game.CoverUrl = cover[0];
+                    game.GenresInfo.AddRange(genres);
+                    game.PlatformsInfo.AddRange(platform);
                 }
             }
 

@@ -17,7 +17,7 @@
         {
             var igdb = new IGDBClient("dhs4qgav57pw3ry6ts1dhfgn5t33c0", "15yjgjhviddv2qppk5h7911ko33pbd");
 
-            var igdbInfo = await igdb.QueryAsync<HomePageViewModel>(IGDBClient.Endpoints.Games, query: "fields name, cover, genres; limit 15;");
+            var igdbInfo = await igdb.QueryAsync<HomePageViewModel>(IGDBClient.Endpoints.Games, query: "fields name, cover, genres, rating; where rating > 95; limit 15;");
 
             var games = igdbInfo.ToList();
 
@@ -27,6 +27,8 @@
                 var game = games[i];
                 var arrCover = game.Cover;
 
+                int rating = Convert.ToInt32(game.Rating);
+                game.Rating = rating;
 
                 if (arrCover == null)
                 {

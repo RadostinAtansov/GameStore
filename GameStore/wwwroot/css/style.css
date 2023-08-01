@@ -3,6 +3,35 @@
     background-color: red;
 }*/
 
+.sizeCard {
+    width: 200px;
+    height: 150px
+}
+
+.cardsSpace {
+    margin-top: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+.flex-container {
+    display: flex;
+    align-items: stretch;
+}
+
+.split-para {
+    display: block;
+    margin: 10px;
+}
+
+.split-para span {
+    display: block;
+    float: right;
+    width: 50%;
+    margin-left: 10px;
+}
+
 .textL {
     overflow: hidden; /* ✔️ Required for ellipsis to appear */
     text-align: center;

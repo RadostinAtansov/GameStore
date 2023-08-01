@@ -14,6 +14,8 @@ namespace GameStore.Models.IGDB
         public int? Cover { get; set; }
         public IGDBCoverDetails? CoverUrl { get; set; }
 
+        public double? Rating { get; set; }
+
         [DisplayName("Desription")]
         public string Summary { get; set; }
 
@@ -22,6 +24,12 @@ namespace GameStore.Models.IGDB
         public List<int> Screenshots = new List<int>();
 
         public IGDBImages Images { get; set; }
+
+        public List<int> Genres = new();
+        public List<IGDBGenre> GenresInfo = new();
+
+        public List<int> Platforms = new();
+        public List<IGDBPlatformsDetails> PlatformsInfo = new();
     }
 
     public class IGDBImages
@@ -31,6 +39,8 @@ namespace GameStore.Models.IGDB
 
     public class IGDBCoverDetails
     {
+        public string imageId { get; set; }
+
         public string Url { get; set; }
     }
 }
