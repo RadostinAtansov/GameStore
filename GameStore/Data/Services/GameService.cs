@@ -328,8 +328,6 @@
             return games;
         }
 
-
-
         public Task RemoveGame(AddGameViewModel game)
         {
             throw new NotImplementedException();

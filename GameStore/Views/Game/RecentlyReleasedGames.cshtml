@@ -25,7 +25,7 @@
         <a type="submit" class="help" asp-controller="Game" asp-action="RecentlyReleasedGames">Recently Released</a>
         <a type="submit" class="help" asp-controller="Game" asp-action="MostAnticipatedGames">Top Anticipated Games</a>
         <div class="search-container">
-            <form asp-controller="Game" asp-action="SearchByName" method="post">
+            <form asp-controller="Game" asp-action="SearchByName" method="get">
                 <input type="text" placeholder="Search.." name="search">
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
