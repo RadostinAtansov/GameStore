@@ -10,5 +10,10 @@
         Task RemoveGame(AddGameViewModel game);
         Task UpdateGame(AddGameViewModel game);
         Task<List<GamesIGDBViewModel>> GetAllGames();
+        Task<List<GamesIGDBViewModel>> GetAllGamesTopRated();
+        Task<List<GamesIGDBViewModel>> GetAllGamesComingSoon();
+        Task<List<GamesIGDBViewModel>> RecentlyReleasedGames();
+        Task<List<GamesIGDBViewModel>> MostAnticipatedGames();
+        Task<List<GamesIGDBViewModel>> SearchByName(string name);
     }
 }

@@ -36,6 +36,41 @@
             return View(allGames);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> ReturnAllTopRatedGames()
+        {
+            var allGames = await _gameService.GetAllGamesTopRated();
+            return View(allGames);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ReturnAllComingSoonGames()
+        {
+            var allGames = await _gameService.GetAllGamesComingSoon();
+            return View(allGames);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> RecentlyReleasedGames()
+        {
+            var allGames = await _gameService.RecentlyReleasedGames();
+            return View(allGames);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> MostAnticipatedGames()
+        {
+            var allGames = await _gameService.MostAnticipatedGames();
+            return View(allGames);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> SearchByName(string search)
+        {
+            var allGames = await _gameService.SearchByName(search);
+            return View(allGames);
+        }
+
         //[HttpGet("game-details/{id}")]
         public async Task<IActionResult> Details(int id)
         {

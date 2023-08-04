@@ -1,0 +1,62 @@
+﻿@model ICollection<GamesIGDBViewModel>
+
+@{
+    ViewData["Title"] = "ReturnAllCominingSoonGames";
+}
+
+
+<h1 style="text-decoration: solid underline black 4px; text-underline-offset: 0.2em; width:200px;">All Games</h1>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/cardReturnAll.css">
+    <link rel="stylesheet" href="~/css/searchBar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="topnav">
+        <a type="submit" class="active" asp-controller="Game" asp-action="ReturnAllTopRatedGames">Top Rated</a>
+        <a type="submit" class="help" asp-controller="Game" asp-action="ReturnAllComingSoonGames">Comming Soon</a>
+        <a type="submit" class="help" asp-controller="Game" asp-action="RecentlyReleasedGames">Recently Released</a>
+        <a type="submit" class="help" asp-controller="Game" asp-action="MostAnticipatedGames">Top Anticipated Games</a>
+        <div class="search-container">
+            <form asp-controller="Game" asp-action="SearchByName" method="post">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+    <div class="courses-container">
+        @foreach (var game in Model)
+        {
+            <div class="card">
+                <a href="javasscript:void();">
+                    <a type="submit" asp-controller="Game" asp-action="Details" asp-route-id="@game.Id">
+                        <div class="category">@game.GenresInfo[0].Name</div>
+                        <img src="@game.CoverUrl.Url" />
+                        <h2 class="title">@game.Name</h2>
+                        <div class="description">@game.Summary</div>
+                        <div class="info">
+                            <div class="platforms">
+                                @foreach (var platform in game.PlatformsInfo)
+                                {
+                                    @platform.Name
+                                    <br />
+                                }
+                            </div>
+                            <div class="duration">
+                                <div class="time-icon">@game.Rating</div>
+                            </div>
+                        </div>
+                    </a>
+                </a>
+            </div>
+        }
+    </div>
+</body>
+</html>

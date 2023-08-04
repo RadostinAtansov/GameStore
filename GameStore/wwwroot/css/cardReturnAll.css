@@ -85,13 +85,13 @@
 }
 
 .courses-container .card .info .time-icon {
-    width: 18px;
+    width: 24px;
     height: 18px;
 }
 
 .courses-container .card .info .duration::after {
     content: "%";
-    margin-left: 4px;
+    margin-left: 6px;
 }
 
 .courses-container {
