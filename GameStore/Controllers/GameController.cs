@@ -40,28 +40,28 @@
         public async Task<IActionResult> ReturnAllTopRatedGames()
         {
             var allGames = await _gameService.GetAllGamesTopRated();
-            return View(allGames);
+            return View("ReturnAllGames", allGames);
         }
 
         [HttpGet]
         public async Task<IActionResult> ReturnAllComingSoonGames()
         {
             var allGames = await _gameService.GetAllGamesComingSoon();
-            return View(allGames);
+            return View("ReturnAllGames", allGames);
         }
 
         [HttpGet]
         public async Task<IActionResult> RecentlyReleasedGames()
         {
             var allGames = await _gameService.RecentlyReleasedGames();
-            return View(allGames);
+            return View("ReturnAllGames", allGames);
         }
 
         [HttpGet]
         public async Task<IActionResult> MostAnticipatedGames()
         {
             var allGames = await _gameService.MostAnticipatedGames();
-            return View(allGames);
+            return View("ReturnAllGames", allGames);
         }
 
         [HttpGet]
@@ -89,7 +89,6 @@
         public async Task<IActionResult> Details(int id)
         {
             var game = await _gameService.GetDetails(id);
-
             return View(game);
         }
     }

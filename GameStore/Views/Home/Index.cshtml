@@ -9,31 +9,69 @@
 
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" />
-        <link rel="stylesheet" type="text/css" href="~/css/slick.css" />
-        <link rel="stylesheet" type="text/css" href="~/css/style.css" />
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="~/css/slickSlider.css" />
     </head>
     <body>
-        <h3 style="text-decoration:underline">Top Ratet Games</h3>
-    <div class="for_slick_slider center">
-        @foreach (var game in Model)
-        {
-            <div class="items">
-                <div class="card">
-                    <img src="@game.CoverUrl.Url">
-                    <div class="container">
-                        <p class="textL"><strong>@game.Name</strong></p>
-                        <p>
-                            <span style="margin-right: 30px">@game.GenresInfo[0].Name</span>
-                            <span style="margin-left: 50px">@game.Rating%</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="overlay"></div>
-            </div>
-        }
 
-    </div> 
+    <section id="tranding">
+        <div class="container">
+            <h1 class="text-center section-heading">Most rated games</h1>
+        </div>
+        <div class="container">
+            <div class="swiper tranding-slider">
+                <div class="swiper-wrapper">
+                    @foreach (var card in Model)
+                    {
+                        <!-- Slide-start -->
+                        <div class="swiper-slide tranding-slide">
+                            <div class="tranding-slide-img">
+                                <img src="//images.igdb.com/igdb/image/upload/t_cover_big/@(card.CoverUrl.imageId).jpg" alt="Tranding">
+                                @*<img src="@card.CoverUrl.Url" alt="Trading">*@
+                            </div>
+                            <div class="tranding-slide-content">
+                                <h1 class="food-price">$101</h1>
+                                <div class="tranding-slide-content-bottom">
+                                    <h2 class="food-name">
+                                        @card.Name
+                                    </h2>
+                                    <h3 class="food-rating">
+                                        <span>@card.Rating</span>
+                                        <div class="rating">
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star"></ion-icon>
+                                        </div>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide-end -->
+                    }
+                </div>
+
+                <div class="tranding-slider-control">
+                    <div class="swiper-button-prev slider-arrow">
+                        <ion-icon name="arrow-back-outline"></ion-icon>
+                    </div>
+                    <div class="swiper-button-next slider-arrow">
+                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
         <div class="flex-container">
             <div style="flex-grow: 1">
                 <div class="card sizeCard">
@@ -111,11 +149,9 @@
             </div>
         </div>
 
-
-        <script src="https://code.jquery.com/jquery-3.7.0.min.js"
-            integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
-            crossorigin="anonymous"></script>
-        <script src="~/js/slick.min.js"></script>
-        <script src="~/js/custom.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+        <script src="~/js/slickeSlider.js"></script>
     </body>
 </html>

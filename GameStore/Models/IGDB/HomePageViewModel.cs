@@ -10,12 +10,8 @@
         public List<int> Genres = new();
         public List<IGDBGenre> GenresInfo = new();
 
-        public double? TotalRating { get; set; }
-        public int? TotalRatingCount { get; set; }
-        public double? AggregatedRating { get; set; }
-        public int? AggregatedRatingCount { get; set; }
         public double? Rating { get; set; }
-        public int? RatingCount { get; set; }
+
     }
 
     public class IGDBGenre

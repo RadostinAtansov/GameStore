@@ -17,7 +17,7 @@
         {
             var igdb = new IGDBClient("dhs4qgav57pw3ry6ts1dhfgn5t33c0", "15yjgjhviddv2qppk5h7911ko33pbd");
 
-            var igdbInfo = await igdb.QueryAsync<HomePageViewModel>(IGDBClient.Endpoints.Games, query: "fields name, cover, genres, rating; where rating > 95; limit 15;");
+            var igdbInfo = await igdb.QueryAsync<HomePageViewModel>(IGDBClient.Endpoints.Games, query: "fields name, cover, genres, rating; where rating > 95; limit 8;");
 
             var games = igdbInfo.ToList();
 
@@ -37,7 +37,7 @@
                 }
                 else
                 {
-                    var cover = await igdb.QueryAsync<IGDBCoverDetails>(IGDBClient.Endpoints.Covers, query: $"fields url; where id = ({string.Join(", ", game.Cover)});");
+                    var cover = await igdb.QueryAsync<IGDBCoverDetails>(IGDBClient.Endpoints.Covers, query: $"fields *; where id = ({string.Join(", ", game.Cover)});");
 
                     var genres = await igdb.QueryAsync<IGDBGenre>(IGDBClient.Endpoints.Genres, query: $"fields name, url; where id = ({game.Genres[0]});");
 

@@ -52,7 +52,7 @@
                 }
                 else
                 {
-                    var cover = await igdb.QueryAsync<IGDBCoverDetails>(IGDBClient.Endpoints.Covers, query: $"fields url; where id = ({string.Join(", ", game.Cover)});");
+                    var cover = await igdb.QueryAsync<IGDBCoverDetails>(IGDBClient.Endpoints.Covers, query: $"fields *; where id = ({string.Join(", ", game.Cover)});");
                     var genres = await igdb.QueryAsync<IGDBGenre>(IGDBClient.Endpoints.Genres, query: $"fields name; where id = ({string.Join(", ", game.Genres)});");
                     var platform = await igdb.QueryAsync<IGDBPlatformsDetails>(IGDBClient.Endpoints.Platforms, query: $"fields name; where id = ({string.Join(", ", game.Platforms)});");
 
@@ -76,7 +76,7 @@
             var dt1 = dateTime1.ToUnixTimeSeconds();
             var dt2 = dateTime2.ToUnixTimeSeconds();
 
-            var releaseDate = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where date > { dt1 } & date < { dt2 }; limit 10;");
+            var releaseDate = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where date > {dt1} & date < {dt2}; limit 10;");
 
             var gamesId = new List<int>();
 
@@ -111,7 +111,7 @@
                 }
                 else
                 {
-                    var cover = await igdb.QueryAsync<IGDBCoverDetails>(IGDBClient.Endpoints.Covers, query: $"fields url; where id = ({string.Join(", ", game.Cover)});");
+                    var cover = await igdb.QueryAsync<IGDBCoverDetails>(IGDBClient.Endpoints.Covers, query: $"fields *; where id = ({string.Join(", ", game.Cover)});");
                     var genres = await igdb.QueryAsync<IGDBGenre>(IGDBClient.Endpoints.Genres, query: $"fields name; where id = ({string.Join(", ", game.Genres)});");
                     var platform = await igdb.QueryAsync<IGDBPlatformsDetails>(IGDBClient.Endpoints.Platforms, query: $"fields name, url; where id = ({string.Join(", ", game.Platforms)});");
                     var releaseDate2 = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where id = ({string.Join(", ", game.ReleaseDates)});");
@@ -157,7 +157,7 @@
                 }
                 else
                 {
-                    var cover = await igdb.QueryAsync<IGDBCoverDetails>(IGDBClient.Endpoints.Covers, query: $"fields url; where id = ({string.Join(", ", game.Cover)});");
+                    var cover = await igdb.QueryAsync<IGDBCoverDetails>(IGDBClient.Endpoints.Covers, query: $"fields *; where id = ({string.Join(", ", game.Cover)});");
                     var genres = await igdb.QueryAsync<IGDBGenre>(IGDBClient.Endpoints.Genres, query: $"fields name; where id = ({string.Join(", ", game.Genres)});");
                     var platform = await igdb.QueryAsync<IGDBPlatformsDetails>(IGDBClient.Endpoints.Platforms, query: $"fields name, url; where id = ({string.Join(", ", game.Platforms)});");
 
@@ -174,7 +174,7 @@
         {
             var igdb = new IGDBClient("dhs4qgav57pw3ry6ts1dhfgn5t33c0", "15yjgjhviddv2qppk5h7911ko33pbd");
 
-             var igdbInfo = await igdb.QueryAsync<DetailsViewModel>(IGDBClient.Endpoints.Games, query: $"fields *; where id = { id }; limit 10;");
+             var igdbInfo = await igdb.QueryAsync<DetailsViewModel>(IGDBClient.Endpoints.Games, query: $"fields *; where id = { id }; limit 5;");
 
             var details = igdbInfo.ToList()[0];
 
@@ -216,7 +216,7 @@
 
             var dt2 = dateTime2.ToUnixTimeSeconds();
 
-            var releaseDate = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where date < { dt1 } & date > { dt2 }; limit 10;");
+            var releaseDate = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where date < { dt1 } & date > { dt2 }; limit 5;");
 
             var gamesId = new List<int>();
 
@@ -249,7 +249,7 @@
                 }
                 else
                 {
-                    var cover = await igdb.QueryAsync<IGDBCoverDetails>(IGDBClient.Endpoints.Covers, query: $"fields url; where id = ({string.Join(", ", game.Cover)});");
+                    var cover = await igdb.QueryAsync<IGDBCoverDetails>(IGDBClient.Endpoints.Covers, query: $"fields *; where id = ({string.Join(", ", game.Cover)});");
                     var genres = await igdb.QueryAsync<IGDBGenre>(IGDBClient.Endpoints.Genres, query: $"fields name; where id = ({string.Join(", ", game.Genres)});");
                     var platform = await igdb.QueryAsync<IGDBPlatformsDetails>(IGDBClient.Endpoints.Platforms, query: $"fields name, url; where id = ({string.Join(", ", game.Platforms)});");
                     var releaseDate2 = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where id = ({string.Join(", ", game.ReleaseDates)});");
@@ -273,7 +273,7 @@
 
             var dt1 = dateTime1.ToUnixTimeSeconds();
 
-            var releaseDate = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where date > { dt1 }; limit 50;");
+            var releaseDate = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where date > { dt1 }; limit 5;");
 
             var gamesId = new List<int>();
 
@@ -306,7 +306,7 @@
                 }
                 else
                 {
-                    var cover = await igdb.QueryAsync<IGDBCoverDetails>(IGDBClient.Endpoints.Covers, query: $"fields url; where id = ({string.Join(", ", game.Cover)});");
+                    var cover = await igdb.QueryAsync<IGDBCoverDetails>(IGDBClient.Endpoints.Covers, query: $"fields *; where id = ({string.Join(", ", game.Cover)});");
                     var genres = await igdb.QueryAsync<IGDBGenre>(IGDBClient.Endpoints.Genres, query: $"fields name; where id = ({string.Join(", ", game.Genres)});");
                     var platform = await igdb.QueryAsync<IGDBPlatformsDetails>(IGDBClient.Endpoints.Platforms, query: $"fields name, url; where id = ({string.Join(", ", game.Platforms)});");
                     var releaseDate2 = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where id = ({string.Join(", ", game.ReleaseDates)});");
@@ -350,7 +350,7 @@
                 }
                 else
                 {
-                    var cover = await igdb.QueryAsync<IGDBCoverDetails>(IGDBClient.Endpoints.Covers, query: $"fields url; where id = ({string.Join(", ", game.Cover)});");
+                    var cover = await igdb.QueryAsync<IGDBCoverDetails>(IGDBClient.Endpoints.Covers, query: $"fields *; where id = ({string.Join(", ", game.Cover)});");
                     var genres = await igdb.QueryAsync<IGDBGenre>(IGDBClient.Endpoints.Genres, query: $"fields name; where id = ({string.Join(", ", game.Genres)});");
                     var platform = await igdb.QueryAsync<IGDBPlatformsDetails>(IGDBClient.Endpoints.Platforms, query: $"fields name, url; where id = ({string.Join(", ", game.Platforms)});");
                     var releaseDate2 = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where id = ({string.Join(", ", game.ReleaseDates)});");
@@ -370,7 +370,7 @@
         {
             var igdb = new IGDBClient("dhs4qgav57pw3ry6ts1dhfgn5t33c0", "15yjgjhviddv2qppk5h7911ko33pbd");
 
-            var igdbInfo = await igdb.QueryAsync<GamesIGDBViewModel>(IGDBClient.Endpoints.Games, query: $"fields *; where platforms.name = \"{ platformSearch }\"; limit 10;");
+            var igdbInfo = await igdb.QueryAsync<GamesIGDBViewModel>(IGDBClient.Endpoints.Games, query: $"fields *; where platforms.name = \"{ platformSearch }\"; limit 5;");
             var games = igdbInfo.ToList();
 
             for (int i = 0; i < games.Count; i++)
@@ -394,7 +394,7 @@
                 }
                 else
                 {
-                    var cover = await igdb.QueryAsync<IGDBCoverDetails>(IGDBClient.Endpoints.Covers, query: $"fields url; where id = ({string.Join(", ", game.Cover)});");
+                    var cover = await igdb.QueryAsync<IGDBCoverDetails>(IGDBClient.Endpoints.Covers, query: $"fields *; where id = ({string.Join(", ", game.Cover)});");
                     var genres = await igdb.QueryAsync<IGDBGenre>(IGDBClient.Endpoints.Genres, query: $"fields name; where id = ({string.Join(", ", game.Genres)});");
                     var platform = await igdb.QueryAsync<IGDBPlatformsDetails>(IGDBClient.Endpoints.Platforms, query: $"fields name, url; where id = ({string.Join(", ", game.Platforms)});");
                     var releaseDate2 = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where id = ({string.Join(", ", game.ReleaseDates)});");
@@ -414,7 +414,7 @@
         {
             var igdb = new IGDBClient("dhs4qgav57pw3ry6ts1dhfgn5t33c0", "15yjgjhviddv2qppk5h7911ko33pbd");
 
-            var igdbInfo = await igdb.QueryAsync<GamesIGDBViewModel>(IGDBClient.Endpoints.Games, query: $"fields *; where genres.name = \"{ searchByGenres }\"; limit 10;");
+            var igdbInfo = await igdb.QueryAsync<GamesIGDBViewModel>(IGDBClient.Endpoints.Games, query: $"fields *; where genres.name = \"{ searchByGenres }\"; limit 5;");
             var games = igdbInfo.ToList();
 
             for (int i = 0; i < games.Count; i++)
@@ -438,7 +438,7 @@
                 }
                 else
                 {
-                    var cover = await igdb.QueryAsync<IGDBCoverDetails>(IGDBClient.Endpoints.Covers, query: $"fields url; where id = ({string.Join(", ", game.Cover)});");
+                    var cover = await igdb.QueryAsync<IGDBCoverDetails>(IGDBClient.Endpoints.Covers, query: $"fields *; where id = ({string.Join(", ", game.Cover)});");
                     var genres = await igdb.QueryAsync<IGDBGenre>(IGDBClient.Endpoints.Genres, query: $"fields name; where id = ({string.Join(", ", game.Genres)});");
                     var platform = await igdb.QueryAsync<IGDBPlatformsDetails>(IGDBClient.Endpoints.Platforms, query: $"fields name, url; where id = ({string.Join(", ", game.Platforms)});");
                     var releaseDate2 = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where id = ({string.Join(", ", game.ReleaseDates)});");

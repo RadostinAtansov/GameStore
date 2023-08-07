@@ -43,7 +43,7 @@
                 <a href="javasscript:void();">
                     <a type="submit" asp-controller="Game" asp-action="Details" asp-route-id="@game.Id"> 
                         <div class="category">@game.GenresInfo[0].Name</div>
-                        <img src="@game.CoverUrl.Url" />
+                        <img src="//images.igdb.com/igdb/image/upload/t_cover_big/@(game.CoverUrl.imageId).jpg" alt="Tranding">
                         <h2 class="title">@game.Name</h2>
                         <div class="description">@game.Summary</div>
                         <div class="info">
@@ -118,5 +118,3 @@
     </script>
     </body>
 </html>
-
-
