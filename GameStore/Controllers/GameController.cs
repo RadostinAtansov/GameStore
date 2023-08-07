@@ -65,10 +65,24 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> SearchByName(string search)
+        public async Task<IActionResult> SearchByName(string searchByName)
         {
-            var allGames = await _gameService.SearchByName(search);
-            return View(allGames);
+            var allGames = await _gameService.SearchByName(searchByName);
+            return View("ReturnAllGames", allGames);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> SearchByPlatform(string platformSearch)
+        {
+            var allGames = await _gameService.SearchByPlatform(platformSearch);
+            return View("ReturnAllGames", allGames);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> SearchByGenre(string searchByGenre)
+        {
+            var allGames = await _gameService.SearchByGenre(searchByGenre);
+            return View("ReturnAllGames", allGames);
         }
 
         //[HttpGet("game-details/{id}")]

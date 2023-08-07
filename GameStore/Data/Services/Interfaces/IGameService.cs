@@ -15,5 +15,7 @@
         Task<List<GamesIGDBViewModel>> RecentlyReleasedGames();
         Task<List<GamesIGDBViewModel>> MostAnticipatedGames();
         Task<List<GamesIGDBViewModel>> SearchByName(string name);
+        Task<List<GamesIGDBViewModel>> SearchByPlatform(string platformSearch);
+        Task<List<GamesIGDBViewModel>> SearchByGenre(string searchByGenre);
     }
 }

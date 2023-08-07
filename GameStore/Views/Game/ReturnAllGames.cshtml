@@ -17,9 +17,7 @@
     <link rel="stylesheet" href="~/css/SideMenu.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <title>Document</title>
-
 
 </head>
     <body>
@@ -33,7 +31,7 @@
             <a type="submit"><span style="font-size:14px" onclick="openNavGenre()"><i class="fa-solid fa-circle-left"></i> Genre</span></a>
         <div class="search-container">
             <form asp-controller="Game" asp-action="SearchByName" method="get">
-                <input type="text" placeholder="Search.." name="search">
+                <input type="text" placeholder="searchByName..." name="searchByName">
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
         </div>
@@ -65,43 +63,41 @@
             </div>
            }      
         </div>
-            <div id="mySidenav" class="sidenav">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="#">PC (Microsoft Windows)</a>
-                <a href="#">PlayStation 5</a>
-                <a href="#">Xbox Series X|S</a>
-                <a href="#">Nintendo Switch</a>
-                <a href="#">Mac</a>
-                <a href="#">Linux</a>
-                <a href="#">iOS</a>
-                <a href="#">Android</a>
-                <a href="#">Xbox One</a>
-                <a href="#">PlayStation 4</a>
-            </div>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a asp-controller="Game" asp-action="SearchByPlatform" asp-route-platformSearch="Linux">Linux</a>
+            <a asp-controller="Game" asp-action="SearchByPlatform" asp-route-platformSearch="PC (Microsoft Windows)">PC (Microsoft Windows)</a>
+            <a asp-controller="Game" asp-action="SearchByPlatform" asp-route-platformSearch="PlayStation 5">PlayStation 5</a>
+            <a asp-controller="Game" asp-action="SearchByPlatform" asp-route-platformSearch="Xbox Series X|S">Xbox Series X|S</a>
+            <a asp-controller="Game" asp-action="SearchByPlatform" asp-route-platformSearch="Nintendo Switch">Nintendo Switch</a>
+            <a asp-controller="Game" asp-action="SearchByPlatform" asp-route-platformSearch="Mac">Mac</a>
+            <a asp-controller="Game" asp-action="SearchByPlatform" asp-route-platformSearch="iOS">iOS</a>
+            <a asp-controller="Game" asp-action="SearchByPlatform" asp-route-platformSearch="Android">Android</a>
+            <a asp-controller="Game" asp-action="SearchByPlatform" asp-route-platformSearch="Xbox One ">Xbox One</a>
+            <a asp-controller="Game" asp-action="SearchByPlatform" asp-route-platformSearch="PlayStation 4">PlayStation 4</a>
+        </div>
         <div id="mySidenavGenre" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNavGenre()">&times;</a>
-            <a href="#">Point-and-click</a>
-            <a href="#">Fighting</a>
-            <a href="#">Shooter</a>
-            <a href="#">Music</a>
-            <a href="#">Platform</a>
-            <a href="#">Puzzle</a>
-            <a href="#">Racing</a>
-            <a href="#">Real Time Strategy (RTS)</a>
-            <a href="#">Role-Playing (RPG)</a>
-            <a href="#">Simulator</a>
-            <a href="#">Sport</a>
-            <a href="#">Turn-based strategy (TBS)</a>
-            <a href="#">Tactical</a>
-            <a href="#">Quiz/Trivia</a>
-            <a href="#">Hack and slash/Beat `em up</a>
-            <a href="#">Pinball</a>
-            <a href="#">Adventure</a>
-            <a href="#">Arcade</a>
-            <a href="#">Visual Novel</a>
-            <a href="#">Indie</a>
-            <a href="#">Card & Board Game</a>
-            <a href="#">MOBA</a>
+            <a asp-controller="Game" asp-action="SearchByGenre" asp-route-searchByGenre="Point-and-click">Point-and-click</a>
+            <a asp-controller="Game" asp-action="SearchByGenre" asp-route-searchByGenre="Fighting">Fighting</a>
+            <a asp-controller="Game" asp-action="SearchByGenre" asp-route-searchByGenre="Shooter">Shooter</a>
+            <a asp-controller="Game" asp-action="SearchByGenre" asp-route-searchByGenre="Music">Music</a>
+            <a asp-controller="Game" asp-action="SearchByGenre" asp-route-searchByGenre="Platform">Platform</a>
+            <a asp-controller="Game" asp-action="SearchByGenre" asp-route-searchByGenre="Puzzle">Puzzle</a>
+            <a asp-controller="Game" asp-action="SearchByGenre" asp-route-searchByGenre="Real Time Strategy (RTS)">Real Time Strategy (RTS)</a>
+            <a asp-controller="Game" asp-action="SearchByGenre" asp-route-searchByGenre="Role-Playing (RPG)">Role-Playing (RPG)</a>
+            <a asp-controller="Game" asp-action="SearchByGenre" asp-route-searchByGenre="Simulator">Simulator</a>
+            <a asp-controller="Game" asp-action="SearchByGenre" asp-route-searchByGenre="Turn-based strategy (TBS)">Turn-based strategy (TBS)</a>
+            <a asp-controller="Game" asp-action="SearchByGenre" asp-route-searchByGenre="Tactical">Tactical</a>
+            <a asp-controller="Game" asp-action="SearchByGenre" asp-route-searchByGenre="Hack and slash/Beat `em up">Hack and slash/Beat `em up</a>
+            <a asp-controller="Game" asp-action="SearchByGenre" asp-route-searchByGenre="Quiz/Trivia">Quiz/Trivia</a>
+            <a asp-controller="Game" asp-action="SearchByGenre" asp-route-searchByGenre="Pinball">Pinball</a>
+            <a asp-controller="Game" asp-action="SearchByGenre" asp-route-searchByGenre="Adventure">Adventure</a>
+            <a asp-controller="Game" asp-action="SearchByGenre" asp-route-searchByGenre="Arcade">Arcade</a>
+            <a asp-controller="Game" asp-action="SearchByGenre" asp-route-searchByGenre="Visual Novel">Visual Novel</a>
+            <a asp-controller="Game" asp-action="SearchByGenre" asp-route-searchByGenre="Indie">Indie</a>
+            <a asp-controller="Game" asp-action="SearchByGenre" asp-route-searchByGenre="Card & Board Game">Card & Board Game</a>
+            <a asp-controller="Game" asp-action="SearchByGenre" asp-route-searchByGenre="MOBA">MOBA</a>
         </div>
     <script>
         function openNav() {
