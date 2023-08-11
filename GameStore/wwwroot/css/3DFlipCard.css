@@ -1,0 +1,168 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    /*box-sizing: border-box;*/
+}
+
+
+
+.container-card3D {
+    display: flex;
+    flex-wrap: wrap;
+/*    width: 100%;
+    min-height: 100vh;*/
+    padding: 10px;
+    transform: scale(0.50);
+    margin: -350px
+}
+
+.card3D {
+    width: 350px;
+    height: 515px;
+    margin: 10px 10px;
+    perspective: 1000px;
+}
+
+.card-inner3D {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: 1s;
+    transform-style: preserve-3d;
+}
+
+.front3D, .back3D {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.front3D {
+    background: url(../images/7.jpg);
+    background-size: cover;
+    background-position: center;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: white;
+}
+
+    .front3D h2 {
+        font-weight: 500;
+    }
+
+    .front3D p {
+        color: #ccc;
+        font-size: 13px;
+    }
+
+    .front3D button {
+        width: 120px;
+        border: 1px solid #fff;
+        background: transparent;
+        border-radius: 50px;
+        padding: 8px 20px;
+        cursor: pointer;
+        margin-top: 20px;
+        color: #fff;
+    }
+
+.back3D {
+    background: #fff;
+    color: #333;
+    padding: 20px 40px;
+    transform: rotateY(180deg);
+}
+
+    .back3D h1 {
+        font-size: 50px;
+        line-height: 55px;
+        margin-bottom: 10px;
+    }
+
+        .back3D h1 span {
+            font-weight: 400;
+        }
+
+    .back3D p {
+        font-size: 14px;
+    }
+
+        .back3D p span {
+            font-weight: 600;
+        }
+
+    .back3D img {
+        width: 250px;
+    }
+
+.row3D {
+    display: flex;
+    align-items: center;
+    margin-top: -10px;
+}
+
+.col3D {
+    flex: 1;
+    text-align: center;
+    color: #555;
+    font-size: 12px;
+    position: relative;
+}
+
+    .col3D h2 {
+        font-size: 20px;
+    }
+
+    .col3D::after {
+        content: '';
+        width: 1.5px;
+        height: 34px;
+        background: #7800ad;
+        position: absolute;
+        top: 16px;
+        right: 0;
+    }
+
+    .col3D:last-child::after {
+        display: none;
+    }
+
+    .col3D p {
+        margin-top: 5px;
+    }
+
+.back3D button {
+    background: #7800ad;
+    color: #fff;
+    border: 0;
+    outline: 0;
+    padding: 8px 25px;
+    border-radius: 30px;
+    font-size: 14px;
+    margin-right: 15px;
+    box-shadow: 0 8px 10px rgba(120, 0, 173, 0.3);
+}
+
+.back3D a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+}
+
+    .back3D a img {
+        width: 50%;
+    }
+
+.card3D:hover .card-inner3D {
+    transform: rotateY(180deg);
+}

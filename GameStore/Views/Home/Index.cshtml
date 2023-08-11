@@ -14,13 +14,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
         <link rel="stylesheet" href="~/css/slickSlider.css" />
+        <link rel="stylesheet" href="~/css/3DFlipCard.css" />
     </head>
     <body>
 
-    <section id="tranding">
-        <div class="container">
-            <h1 class="text-center section-heading">Most rated games</h1>
-        </div>
+    <header id="tranding">
+        
+            <h2 class="text-center section-heading"><strong>Popular right now</strong></h2>
+        
         <div class="container">
             <div class="swiper tranding-slider">
                 <div class="swiper-wrapper">
@@ -28,28 +29,30 @@
                     {
                         <!-- Slide-start -->
                         <div class="swiper-slide tranding-slide">
-                            <div class="tranding-slide-img">
-                                <img src="//images.igdb.com/igdb/image/upload/t_cover_big/@(card.CoverUrl.imageId).jpg" alt="Tranding">
-                                @*<img src="@card.CoverUrl.Url" alt="Trading">*@
-                            </div>
-                            <div class="tranding-slide-content">
-                                <h1 class="food-price">$101</h1>
-                                <div class="tranding-slide-content-bottom">
-                                    <h2 class="food-name">
-                                        @card.Name
-                                    </h2>
-                                    <h3 class="food-rating">
-                                        <span>@card.Rating</span>
-                                        <div class="rating">
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                        </div>
-                                    </h3>
+                            <a type="submit" asp-controller="Game" asp-action="Details" asp-route-id="@card.Id">
+
+                                <div class="tranding-slide-img">
+                                    <img src="//images.igdb.com/igdb/image/upload/t_cover_big/@(card.CoverUrl.imageId).jpg" alt="Tranding">
                                 </div>
-                            </div>
+                                <div class="tranding-slide-content">
+                                    <h1 class="food-price">$101</h1>
+                                    <div class="tranding-slide-content-bottom">
+                                        <h2 class="food-name">
+                                            @card.Name
+                                        </h2>
+                                        <h3 class="food-rating">
+                                            <span>@card.Rating</span>
+                                            <div class="rating">
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                            </div>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                         <!-- Slide-end -->
                     }
@@ -67,91 +70,278 @@
 
             </div>
         </div>
-    </section>
+    </header>
 
 
-
-
-        <div class="flex-container">
-            <div style="flex-grow: 1">
-                <div class="card sizeCard">
-                    <img src="~/images/2 (2).jpg">
-                    <div class="container">
-                        <p class="textL"><strong>Spong Bob</strong></p>
+    <main>
+      <h2 class="title-recently-released">Recently released</h2>
+        <div class="container-card3D">
+            <div style="flex-basis: 1090px" class="card3D">
+                <div class="card-inner3D">
+                    <div class="front3D">
+                        @*<img src="~//images/8.jpg"/>*@
+                        <h2>Nissan 350z</h2>
+                        <p>Web Designer, USA</p>
+                        <button>Hover me</button>
+                    </div>
+                    <div class="back3D">
+                        <img src="~/images/8.jpg">
+                        <h1>Nissan <span>350z</span></h1>
                         <p>
-                            <span style="margin-right: 30px">Action</span>
-                            <span style="margin-left: 50px">99%</span>
+                            Web Designer, USA Web Designer, <span>microsoft</span>USA Web Designer, USA Web Designer,
+                            USA Web Designer, USA Web Designer, USA Web Designer, USA
                         </p>
+                        <div class="row3D">
+                            <div class="col3D">
+                                <h2>12k</h2>
+                                <p>Followers</p>
+                            </div>
+                            <div class="col3D">
+                                <h2>250</h2>
+                                <p>Following</p>
+                            </div>
+                            <div class="col3D">
+                                <h2>500</h2>
+                                <p>Likes</p>
+                            </div>
+                        </div>
+                        <div class="row3D">
+                            <button>follow</button>
+                            <a href="#"> <img src="~/images/8.jpg"></a>
+                            <a href="#"> <img src="~/images/8.jpg"></a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div style="flex-grow: 1">
-                <div class="card sizeCard" style="flex-grow: 1">
-                    <img src="~/images/2 (2).jpg">
-                    <div class="container">
-                        <p class="textL"><strong>Spong Bob</strong></p>
+            <div class="card3D">
+                <div class="card-inner3D">
+                    <div class="front3D">
+                        @*<img src="~//images/8.jpg"/>*@
+                        <h2>Nissan 350z</h2>
+                        <p>Web Designer, USA</p>
+                        <button>Hover me</button>
+                    </div>
+                    <div class="back3D">
+                        <img src="~/images/8.jpg">
+                        <h1>Nissan <span>350z</span></h1>
                         <p>
-                            <span style="margin-right: 30px">Action</span>
-                            <span style="margin-left: 50px">99%</span>
+                            Web Designer, USA Web Designer, <span>microsoft</span>USA Web Designer, USA Web Designer,
+                            USA Web Designer, USA Web Designer, USA Web Designer, USA
                         </p>
+                        <div class="row3D">
+                            <div class="col3D">
+                                <h2>12k</h2>
+                                <p>Followers</p>
+                            </div>
+                            <div class="col3D">
+                                <h2>250</h2>
+                                <p>Following</p>
+                            </div>
+                            <div class="col3D">
+                                <h2>500</h2>
+                                <p>Likes</p>
+                            </div>
+                        </div>
+                        <div class="row3D">
+                            <button>follow</button>
+                            <a href="#"> <img src="~/images/8.jpg"></a>
+                            <a href="#"> <img src="~/images/8.jpg"></a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div style="flex-grow: 8">
-                <div class="card sizeCard" style="flex-grow: 8">
-                    <img src="~/images/2 (2).jpg">
-                    <div class="container">
-                        <p class="textL"><strong>Spong Bob</strong></p>
+            <div class="card3D">
+                <div class="card-inner3D">
+                    <div style="flex-grow: 12" class="front3D">
+                        @*<img src="~//images/8.jpg"/>*@
+                        <h2>Nissan 350z</h2>
+                        <p>Web Designer, USA</p>
+                        <button>Hover me</button>
+                    </div>
+                    <div class="back3D">
+                        <img src="~/images/8.jpg">
+                        <h1>Nissan <span>350z</span></h1>
                         <p>
-                            <span style="margin-right: 30px">Action</span>
-                            <span style="margin-left: 50px">99%</span>
+                            Web Designer, USA Web Designer, <span>microsoft</span>USA Web Designer, USA Web Designer,
+                            USA Web Designer, USA Web Designer, USA Web Designer, USA
                         </p>
+                        <div class="row3D">
+                            <div class="col3D">
+                                <h2>12k</h2>
+                                <p>Followers</p>
+                            </div>
+                            <div class="col3D">
+                                <h2>250</h2>
+                                <p>Following</p>
+                            </div>
+                            <div class="col3D">
+                                <h2>500</h2>
+                                <p>Likes</p>
+                            </div>
+                        </div>
+                        <div class="row3D">
+                            <button>follow</button>
+                            <a href="#"> <img src="~/images/8.jpg"></a>
+                            <a href="#"> <img src="~/images/8.jpg"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="card3D">
+                    <div class="card-inner3D">
+                        <div class="front3D">
+                            @*<img src="~//images/8.jpg"/>*@
+                            <h2>Nissan 350z</h2>
+                            <p>Web Designer, USA</p>
+                            <button>Hover me</button>
+                        </div>
+                        <div class="back3D">
+                            <img src="~/images/8.jpg">
+                            <h1>Nissan <span>350z</span></h1>
+                            <p>
+                                Web Designer, USA Web Designer, <span>microsoft</span>USA Web Designer, USA Web Designer,
+                                USA Web Designer, USA Web Designer, USA Web Designer, USA
+                            </p>
+                            <div class="row3D">
+                                <div class="col3D">
+                                    <h2>12k</h2>
+                                    <p>Followers</p>
+                                </div>
+                                <div class="col3D">
+                                    <h2>250</h2>
+                                    <p>Following</p>
+                                </div>
+                                <div class="col3D">
+                                    <h2>500</h2>
+                                    <p>Likes</p>
+                                </div>
+                            </div>
+                            <div class="row3D">
+                                <button>follow</button>
+                                <a href="#"> <img src="~/images/8.jpg"></a>
+                                <a href="#"> <img src="~/images/8.jpg"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card3D">
+                    <div class="card-inner3D">
+                        <div class="front3D">
+                            @*<img src="~//images/8.jpg"/>*@
+                            <h2>Nissan 350z</h2>
+                            <p>Web Designer, USA</p>
+                            <button>Hover me</button>
+                        </div>
+                        <div class="back3D">
+                            <img src="~/images/8.jpg">
+                            <h1>Nissan <span>350z</span></h1>
+                            <p>
+                                Web Designer, USA Web Designer, <span>microsoft</span>USA Web Designer, USA Web Designer,
+                                USA Web Designer, USA Web Designer, USA Web Designer, USA
+                            </p>
+                            <div class="row3D">
+                                <div class="col3D">
+                                    <h2>12k</h2>
+                                    <p>Followers</p>
+                                </div>
+                                <div class="col3D">
+                                    <h2>250</h2>
+                                    <p>Following</p>
+                                </div>
+                                <div class="col3D">
+                                    <h2>500</h2>
+                                    <p>Likes</p>
+                                </div>
+                            </div>
+                            <div class="row3D">
+                                <button>follow</button>
+                                <a href="#"> <img src="~/images/8.jpg"></a>
+                                <a href="#"> <img src="~/images/8.jpg"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div style="flex-basis: 720px" class="card3D">
+                    <div class="card-inner3D">
+                        <div class="front3D">
+                            @*<img src="~//images/8.jpg"/>*@
+                            <h2>Nissan 350z</h2>
+                            <p>Web Designer, USA</p>
+                            <button>Hover me</button>
+                        </div>
+                        <div class="back3D">
+                            <img src="~/images/8.jpg">
+                            <h1>Nissan <span>350z</span></h1>
+                            <p>
+                                Web Designer, USA Web Designer, <span>microsoft</span>USA Web Designer, USA Web Designer,
+                                USA Web Designer, USA Web Designer, USA Web Designer, USA
+                            </p>
+                            <div class="row3D">
+                                <div class="col3D">
+                                    <h2>12k</h2>
+                                    <p>Followers</p>
+                                </div>
+                                <div class="col3D">
+                                    <h2>250</h2>
+                                    <p>Following</p>
+                                </div>
+                                <div class="col3D">
+                                    <h2>500</h2>
+                                    <p>Likes</p>
+                                </div>
+                            </div>
+                            <div class="row3D">
+                                <button>follow</button>
+                                <a href="#"> <img src="~/images/8.jpg"></a>
+                                <a href="#"> <img src="~/images/8.jpg"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="card3D">
+                <div class="card-inner3D">
+                    <div class="front3D">
+                        @*<img src="~//images/8.jpg"/>*@
+                        <h2>Nissan 350z</h2>
+                        <p>Web Designer, USA</p>
+                        <button>Hover me</button>
+                    </div>
+                    <div class="back3D">
+                        <img src="~/images/8.jpg">
+                        <h1>Nissan <span>350z</span></h1>
+                        <p>
+                            Web Designer, USA Web Designer, <span>microsoft</span>USA Web Designer, USA Web Designer,
+                            USA Web Designer, USA Web Designer, USA Web Designer, USA
+                        </p>
+                        <div class="row3D">
+                            <div class="col3D">
+                                <h2>12k</h2>
+                                <p>Followers</p>
+                            </div>
+                            <div class="col3D">
+                                <h2>250</h2>
+                                <p>Following</p>
+                            </div>
+                            <div class="col3D">
+                                <h2>500</h2>
+                                <p>Likes</p>
+                            </div>
+                        </div>
+                        <div class="row3D">
+                            <button>follow</button>
+                            <a href="#"> <img src="~/images/8.jpg"></a>
+                            <a href="#"> <img src="~/images/8.jpg"></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="flex-container">
-            <div>
-                <div class="card sizeCard" style="flex-grow: 8">
-                    <img src="~/images/2 (2).jpg">
-                    <div class="container">
-                        <p class="textL"><strong>Spong Bob</strong></p>
-                        <p>
-                            <span style="margin-right: 30px">Action</span>
-                            <span style="margin-left: 50px">99%</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="card sizeCard" style="flex-grow: 1">
-                    <img src="~/images/2 (2).jpg">
-                    <div class="container">
-                        <p class="textL"><strong>Spong Bob</strong></p>
-                        <p>
-                            <span style="margin-right: 30px">Action</span>
-                            <span style="margin-left: 50px">99%</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="card sizeCard" style="flex-grow: 1">
-                    <img src="~/images/2 (2).jpg">
-                    <div class="container">
-                        <p class="textL"><strong>Spong Bob</strong></p>
-                        <p>
-                            <span style="margin-right: 30px">Action</span>
-                            <span style="margin-left: 50px">99%</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </main>
 
-        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-        <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-        <script src="~/js/slickeSlider.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="~/js/slickeSlider.js"></script>
     </body>
 </html>

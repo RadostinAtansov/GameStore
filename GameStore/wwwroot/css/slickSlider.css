@@ -16,6 +16,12 @@
     --bg: #f5f5f5;
 }
 
+.title-recently-released {
+    margin-bottom: 100px;
+    margin-left: 155px;
+    text-decoration: underline grammar-error 8%;
+}
+
 html {
     font-size: 62.5%;
     font-family: "Montserrat", sans-serif;
@@ -67,16 +73,20 @@ body {
     max-width: 124rem;
     padding: 0 1rem;
     margin: 0 auto;
+    transform:scale(0.75);
 }
 
 .text-center {
-    text-align: center;
+    font-weight: 400;
+    margin-bottom: -80px;
 }
 
 .section-heading {
     font-size: 3rem;
-    color: var(--primary);
     padding: 2rem 0;
+    text-align: left;
+    padding-right: 620px;
+    text-decoration: underline orange 8%;
 }
 
 #tranding {
