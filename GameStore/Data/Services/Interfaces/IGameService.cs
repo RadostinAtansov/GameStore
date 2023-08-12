@@ -17,6 +17,6 @@
         Task<List<GamesIGDBViewModel>> SearchByName(string name);
         Task<List<GamesIGDBViewModel>> SearchByPlatform(string platformSearch);
         Task<List<GamesIGDBViewModel>> SearchByGenre(string searchByGenre);
-        Task<List<GamesIGDBViewModel>> ReturnAllPlatform();
+        Task<List<PlatformsViewModel>> ReturnAllPlatform();
     }
 }

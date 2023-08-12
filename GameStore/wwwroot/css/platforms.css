@@ -1,2 +1,39 @@
-﻿body {
+﻿
+.platform {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.platform img {
+    width: 75px;
+    height: 75px;
+    margin-top: 15px;
+    margin-right: 10px;
+    margin-left: 40px;
+}
+
+.platform h2 {
+    font-size: 16px;
+}
+
+.platform p {
+    font-size: 12px;
+}
+
+.platform .side-text {
+    margin-bottom: 25px;
+}
+
+.side-text p {
+    margin-bottom: 10px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+h1 {
+    text-align: center; 
+    margin-bottom: 50px;
 }
