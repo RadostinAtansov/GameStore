@@ -29,12 +29,12 @@
             <a type="submit" class="help" asp-controller="Game" asp-action="MostAnticipatedGames">Top Anticipated Games</a>
             <a type="submit"><span style="font-size:14px" onclick="openNav()"><i class="fa-solid fa-circle-left"></i> Game Platforms</span></a>
             <a type="submit"><span style="font-size:14px" onclick="openNavGenre()"><i class="fa-solid fa-circle-left"></i> Genre</span></a>
-        <div class="search-container">
-            <form asp-controller="Game" asp-action="SearchByName" method="get">
-                <input type="text" placeholder="searchByName..." name="searchByName">
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-        </div>
+            <div class="search-container">
+                <form asp-controller="Game" asp-action="SearchByName" method="get">
+                    <input type="text" placeholder="searchByName..." name="searchByName">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
         </div>
         <div class="courses-container">
            @foreach (var game in Model)

@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    /*box-sizing: border-box;*/
 }
 
 
@@ -10,11 +9,10 @@
 .container-card3D {
     display: flex;
     flex-wrap: wrap;
-/*    width: 100%;
-    min-height: 100vh;*/
     padding: 10px;
     transform: scale(0.50);
-    margin: -350px
+    margin-top: -500px;
+    width: 1200px;
 }
 
 .card3D {
@@ -165,4 +163,66 @@
 
 .card3D:hover .card-inner3D {
     transform: rotateY(180deg);
+}
+
+.three-colomns-games p {
+    font-size: 8px;
+}
+
+.picture img {
+    width: 45px;
+    height: 40px;
+}
+
+.three-colomns-games {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: -380px;
+    margin-left: -30px;
+    margin-bottom: 100px;
+}
+
+    .three-colomns-games h3 {
+        font-size: 14px;
+        display: inline-block;
+        padding-bottom: 5px;
+        position: relative;
+        
+    }
+
+        .three-colomns-games h3:before {
+            content: "";
+            position: absolute;
+            width: 30%;
+            height: 5px;
+            bottom: 0;
+            left: 0%;
+            border-bottom: 1.5px solid orange;
+        }
+
+a:link {
+    text-decoration: none;
+}
+
+.three-colomns-games > * {
+    /*width: calc(100% / 3);*/
+}
+
+
+.container-small-column-games-left {
+   margin-right: 10px;
+}
+
+.row-text-img {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container-small-column-games-middle {
+    margin-right: 10px;
+}
+
+.container-small-column-games-right {
+    
 }

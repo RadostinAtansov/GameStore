@@ -18,9 +18,21 @@
 
 .title-recently-released {
     margin-bottom: 100px;
-    margin-left: 155px;
-    text-decoration: underline grammar-error 8%;
+    margin-left: 200px;
+    display: inline-block;
+    padding-bottom: 5px;
+    position: relative;
 }
+
+    .title-recently-released:before{
+        content: "";
+        position: absolute;
+        width: 30%;
+        height: 5px;
+        bottom: 0;
+        left: 0%;
+        border-bottom: 3px solid green;
+    }
 
 html {
     font-size: 62.5%;
@@ -84,9 +96,22 @@ body {
 .section-heading {
     font-size: 3rem;
     padding: 2rem 0;
-    text-align: left;
     padding-right: 620px;
-    text-decoration: underline orange 8%;
+    /*text-decoration: underline orange 8%;*/
+    display: inline-block;
+    padding-bottom: 5px;
+    position: relative;
+    margin-left: 200px;
+}
+
+.text-center:before {
+    content: "";
+    position: absolute;
+    width: 10%;
+    height: 5px;
+    bottom: 0;
+    left: 0%;
+    border-bottom: 3px solid orange;
 }
 
 #tranding {

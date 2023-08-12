@@ -9,44 +9,47 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-inverse border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Game Store</a>
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> <i class="fa-solid fa-shop"></i> Game Store</a>
                 </div>
                 <ul class="navbar-nav flex-grow-1">
-                    
-                    <li> 
-                        <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
                     <li class="dropdown">
-                        <a class="nav-link text-white" class="dropdown-toggle" data-toggle="dropdown" href="#">Categories <span class="caret"></span></a>
+                        <a class="nav-link text-white" class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="fa-solid fa-gamepad"></i> Games <span class="caret"></span></a>
                         <ul class="dropdown-menu" style="background-color: black">
-                            <li><a style="color: red" href="#">Action</a></li>
-                            <li><a style="color: red" href="#">Singleplayer</a></li>
-                            <li><a style="color: red" href="#">Multiplayer</a></li>
+                            <li><a style="color: mediumpurple" href="#"> <i class="fa-solid fa-clock"></i> Comming Soon</a></li>
+                            <li><a style="color: mediumpurple" href="#"> <i class="fa-solid fa-truck"></i> Recently Released</a></li>
+                            <li><a style="color: mediumpurple" asp-area="" asp-controller="Game" asp-action="ReturnAllTopRatedGames"> <i class="fa-solid fa-chart-line"></i> Top 100</a></li>
+                            <li><a style="color: mediumpurple" asp-area="" asp-controller="Game" asp-action="ReturnAllGames"> <i class="fa-solid fa-gamepad"></i> All Games</a></li>
+                            <li><a style="color: rebeccapurple" href="#"> <i class="fa-solid fa-magnifying-glass-plus"></i> Advanced Search</a></li>
+                            <li><a style="color: purple" href="#"> <i class="fa-solid fa-circle-plus"></i> Add Game</a></li>
+                            <li><a style="color: purple" href="#"> <i class="fa-solid fa-circle-plus"></i> Add Company</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="nav-link text-white" class="dropdown-toggle" data-toggle="dropdown" href="#">Platforms <span class="caret"></span></a>
+                        <a class="nav-link text-white" asp-area="" asp-controller="Game" asp-action="ReturnAllPlatforms"> <i class="fa-solid fa-laptop"></i> Platforms</a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-white" asp-area="" asp-controller="Game" asp-action="ReturnAllTopRatedGames"> <i class="fa-solid fa-chart-line"></i> Top 100</a>
+                    </li>
+                    <li class="dropdown">
+                        <a class="nav-link text-white" class="dropdown-toggle" data-toggle="dropdown" href="#"><span style="color: red"> <i class="fa-solid fa-circle-info"></i> Contribute to IGDB Community</span><span class="caret"></span></a>
                         <ul class="dropdown-menu" style="background-color: black">
-                            <li><a style="color: red" href="#">Xbox</a></li>
-                            <li><a style="color: red" href="#">PS5</a></li>
-                            <li><a style="color: red" href="#">PC (Microsoft)</a></li>
-                            <li><a style="color: red" href="#">All Platforms.......</a></li>
+                            <li><a style="color: mediumpurple" href="https://api-docs.igdb.com/#getting-started"> <i class="fa-brands fa-connectdevelop"></i> Developer API</a></li>
+                            <li><a style="color: mediumpurple" href="https://www.igdb.com/karma_hunters"> <i class="fa-solid fa-rectangle-list"></i> Karma Hunter</a></li>
+                            <li><a style="color: mediumpurple" href="https://discord.com/invite/WvBNFRu"> <i class="fa-brands fa-discord"></i> Discord</a></li>
+                            <li><a style="color: rebeccapurple" href="https://www.igdb.com/about"> <i class="fa-solid fa-address-card"></i> About IGDB</a></li>
+                            <li><a style="color: rebeccapurple" href="https://github.com/twitchtv/igdb-contribution-guidelines/wiki"> <i class="fa-brands fa-square-github"></i> Contributions GitHub</a></li>
+                            <li><a style="color: rebeccapurple" href="https://twitch.uservoice.com/forums/929953-igdb"> <i class="fa-solid fa-microphone-lines"></i> UsersVoice</a></li>
+                            <li><a style="color: purple" href="https://www.igdb.com/contact"> <i class="fa-solid fa-file-contract"></i> Contact</a></li>
+                            <li><a style="color: purple" href="https://www.igdb.com/games/new"> <i class="fa-solid fa-circle-plus"></i> Add Game</a></li>
+                            <li><a style="color: purple" href="https://www.igdb.com/companies/new"> <i class="fa-solid fa-circle-plus"></i> Add Company</a></li>
                         </ul>
-                    </li>
-                    <li>
-                        <a class="nav-link text-white" asp-area="" asp-controller="Game" asp-action="ReturnAllGames">All Games</a>
-                    </li>
-                    <li>
-                        <a class="nav-link text-white" asp-area="" asp-controller="Game" asp-action="ReturnAllGames">Top 100</a>
-                    </li>
-                    <li>
-                        <a class="nav-link text-white" asp-area="" asp-controller="Game" asp-action="ReturnAllGames">Reviews</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
