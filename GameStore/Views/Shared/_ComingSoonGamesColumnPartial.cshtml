@@ -1,0 +1,12 @@
+﻿@model IEnumerable<GamesIGDBViewModel>
+
+@foreach (var game in Model)
+{
+    <div class="row-text-img">
+        <div class="picture"><img src="//images.igdb.com/igdb/image/upload/t_thumb/@(game.CoverUrl.imageId).jpg" /></div>
+        <div class="date-released">
+            <p><a type="submit" asp-controller="Game" asp-action="Details" asp-route-id="@game.Id">@game.Name</a></p>
+            <p>@game.ReleaseDateInfo[0].Date.Value.ToString("yyyy-MM-dd")</p>
+        </div>
+    </div>
+}

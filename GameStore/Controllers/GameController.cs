@@ -37,6 +37,13 @@
         }
 
         [HttpGet]
+        public async Task<IActionResult> ReturnPlatform(int id)
+        {
+            var platform = await _gameService.ReturnPlatform(id);
+            return View("DetailsPlatform", platform);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> ReturnAllGames()
         {
             var allGames = await _gameService.GetAllGames();

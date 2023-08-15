@@ -216,7 +216,7 @@
 
             var dt2 = dateTime2.ToUnixTimeSeconds();
 
-            var releaseDate = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where date < { dt1 } & date > { dt2 }; limit 5;");
+            var releaseDate = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where date < { dt1 } & date > { dt2 }; limit 10;");
 
             var gamesId = new List<int>();
 
@@ -273,7 +273,7 @@
 
             var dt1 = dateTime1.ToUnixTimeSeconds();
 
-            var releaseDate = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where date > { dt1 }; limit 5;");
+            var releaseDate = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where date > { dt1 }; limit 10;");
 
             var gamesId = new List<int>();
 
@@ -497,6 +497,11 @@
 
             // return games;
             return new List<PlatformsViewModel>();
+        }
+
+        public async Task<PlatformDetailsViewModel> ReturnPlatform(int id)
+        {
+            return new PlatformDetailsViewModel() { Id = 0, Name = "QWER", Description = "QWESADSAD"};
         }
 
         public Task RemoveGame(AddGameViewModel game)

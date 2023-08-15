@@ -4,82 +4,47 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-
-<div>
+@*<h1>Details</h1>*@
 
 
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Summary)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Summary)
-        </dd>
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Cover)
-        </dt>
-        <dd class="col-sm-10">
-            <img src="@Url.Content(Model.CoverInfo.Url)" width="150" />
-        </dd>
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Genres)
-        </dt>
-        <dd class="col-sm-10">
-            @foreach (var genre in Model.GenresInfo)
-            {
-                <p>@genre.Name</p>
-            }
-        </dd>
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Images)
-        </dt>
-        <dd class="col-sm-10">
-            @foreach (var img in Model.Images)
-            {
-                <img src="@Url.Content(img.Url)" width="250"/>
-            }
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.GameModes)
-        </dt>
-        <dd class="col-sm-10">
-            @foreach (var mode in Model.GameModesInfo)
-            {
-                <p>@mode.Name</p>
-            }
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Platforms)
-        </dt>
-        <dd class="col-sm-10">
-            @foreach (var platform in Model.PlatformsInfo)
-            {
-                <p>@platform.Name</p>
-            }
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Websites)
-        </dt>
-        <dd class="col-sm-10">
-            @foreach (var site in Model.WebsitesInfo)
-            {
-                <a href="@site.Url">@site.Category</a>
-            }
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="~/css/details.css" />
+    </head>
+    <body>
+        <main>
+            <div class="info-game">
+                <h1>Name of the game</h1>
+                <p>Genre:</p>
+                <p>Platforms:</p>
+                <p>Editions:<a>Link</a></p>
+                <p>Desciption:</p>
+                <p>Socials: steam, GOG, Twitch, Instagram</p>
+                <p>IGDB ID:</p>
+                <p>Release Dates:</p>
+                <p>Developers:</p>
+                <p>Publisher:</p>
+                <p>Game Modes:</p>
+                <p>Themes:</p>
+                <p>Series:</p>
+                <p>Supported Languages:</p>
+                <p>Releated Lists: Many games</p>
+                <p>Age Rating:</p>
+                <p>Other:</p>
+                <p>Last Updated:</p>
+            </div>
+            <div class="rotateSlider">
+                <span style="--i:1"><img src="~/images/1.jpg" alt="" /></span>
+                <span style="--i:2"><img src="~/images/2.jpg" alt="" /></span>
+                <span style="--i:3"><img src="~/images/3.jpg" alt="" /></span>
+                <span style="--i:4"><img src="~/images/4.jpg" alt="" /></span>
+                <span style="--i:5"><img src="~/images/5.jpg" alt="" /></span>
+                <span style="--i:6"><img src="~/images/6.jpg" alt="" /></span>
+                <span style="--i:7"><img src="~/images/7.jpg" alt="" /></span>
+                <span style="--i:8"><img src="~/images/8.jpg" alt="" /></span>
+            </div>
+        </main>
+        
+    </body>
+</html>

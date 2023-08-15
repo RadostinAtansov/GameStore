@@ -17,6 +17,35 @@ namespace GameStore.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> RenderGamesMiddle()
+        {
+            //var games = await _homeService.ReturnRecentlyReleasedGamesFromIGDB();
+            return PartialView("_RecentlyReleasedPartial"/*, games*/);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> RenderMostAnticipatedGames()
+        {
+            var games = await _homeService.ReturnMostAnticipatedGamesFromIGDB();
+            return PartialView("_ReturnMostAnticipatedGamesPartialView", games);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> RenderGamesDownRecentlyReleased()
+        {
+            var games = await _homeService.ReturnRecentlyReleasedGamesFromIGDB();
+            return PartialView("_RecentlyReleasedColumnPartial", games);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> RenderGamesDownComingSoon()
+        {
+            var games = await _homeService.ReturnComingSoonGamesFromIGDB();
+            return PartialView("_ComingSoonGamesColumnPartial", games);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             var games = await _homeService.ReturnInfoFromIGDB();

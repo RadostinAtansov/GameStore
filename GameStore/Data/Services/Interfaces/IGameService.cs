@@ -18,5 +18,6 @@
         Task<List<GamesIGDBViewModel>> SearchByPlatform(string platformSearch);
         Task<List<GamesIGDBViewModel>> SearchByGenre(string searchByGenre);
         Task<List<PlatformsViewModel>> ReturnAllPlatform();
+        Task<PlatformDetailsViewModel> ReturnPlatform(int id);
     }
 }

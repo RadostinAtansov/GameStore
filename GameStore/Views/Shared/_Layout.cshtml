@@ -22,8 +22,8 @@
                     <li class="dropdown">
                         <a class="nav-link text-white" class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="fa-solid fa-gamepad"></i> Games <span class="caret"></span></a>
                         <ul class="dropdown-menu" style="background-color: black">
-                            <li><a style="color: mediumpurple" href="#"> <i class="fa-solid fa-clock"></i> Comming Soon</a></li>
-                            <li><a style="color: mediumpurple" href="#"> <i class="fa-solid fa-truck"></i> Recently Released</a></li>
+                            <li><a style="color: mediumpurple" asp-controller="Game" asp-action="ReturnAllComingSoonGames"> <i class="fa-solid fa-clock"></i> Coming Soon</a></li>
+                            <li><a style="color: mediumpurple" asp-controller="Game" asp-action="RecentlyReleasedGames"> <i class="fa-solid fa-truck"></i> Recently Released</a></li>
                             <li><a style="color: mediumpurple" asp-area="" asp-controller="Game" asp-action="ReturnAllTopRatedGames"> <i class="fa-solid fa-chart-line"></i> Top 100</a></li>
                             <li><a style="color: mediumpurple" asp-area="" asp-controller="Game" asp-action="ReturnAllGames"> <i class="fa-solid fa-gamepad"></i> All Games</a></li>
                             <li><a style="color: rebeccapurple" href="#"> <i class="fa-solid fa-magnifying-glass-plus"></i> Advanced Search</a></li>
