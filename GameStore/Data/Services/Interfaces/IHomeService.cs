@@ -8,5 +8,6 @@
         Task<List<GamesIGDBViewModel>> ReturnRecentlyReleasedGamesFromIGDB();
         Task<List<GamesIGDBViewModel>> ReturnComingSoonGamesFromIGDB();
         Task<List<GamesIGDBViewModel>> ReturnMostAnticipatedGamesFromIGDB();
+        Task<List<GamesIGDBViewModel>> ReturnMiddleSiteOnPageGamesFromIGDB();
     }
 }

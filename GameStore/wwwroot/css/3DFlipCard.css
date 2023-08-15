@@ -39,7 +39,7 @@
 }
 
 .front3D {
-    background: url(../images/7.jpg);
+    /*background: url(../images/7.jpg);*/
     background-size: cover;
     background-position: center;
     padding: 60px 40px;
@@ -47,8 +47,18 @@
     flex-direction: column;
     justify-content: flex-end;
     color: white;
+    overflow: hidden;
+    position: absolute;
+
 }
 
+    .front3D img {
+        pointer-events: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
     .front3D h2 {
         font-weight: 500;
     }
@@ -86,16 +96,19 @@
             font-weight: 400;
         }
 
-    .back3D p {
-        font-size: 14px;
-    }
-
+.summary{
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
         .back3D p span {
             font-weight: 600;
         }
 
     .back3D img {
-        width: 250px;
+        width: 200px;
+        height: 200px;
     }
 
 .row3D {

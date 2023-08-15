@@ -19,8 +19,8 @@ namespace GameStore.Controllers
         [HttpGet]
         public async Task<IActionResult> RenderGamesMiddle()
         {
-            //var games = await _homeService.ReturnRecentlyReleasedGamesFromIGDB();
-            return PartialView("_RecentlyReleasedPartial"/*, games*/);
+            var games = await _homeService.ReturnMiddleSiteOnPageGamesFromIGDB();
+            return PartialView("_RecentlyReleasedPartial", games);
         }
 
 
