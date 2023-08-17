@@ -5,19 +5,19 @@
 
     public interface IGameService
     {
-        Task<DetailsViewModel> GetDetails(int id);
         Task AddGame(AddGameViewModel game);
         Task RemoveGame(AddGameViewModel game);
         Task UpdateGame(AddGameViewModel game);
+        Task<DetailsViewModel> GetDetails(int id);
         Task<List<GamesIGDBViewModel>> GetAllGames();
+        Task<List<PlatformsViewModel>> ReturnAllPlatform();
         Task<List<GamesIGDBViewModel>> GetAllGamesTopRated();
+        Task<List<GamesIGDBViewModel>> MostAnticipatedGames();
         Task<List<GamesIGDBViewModel>> GetAllGamesComingSoon();
         Task<List<GamesIGDBViewModel>> RecentlyReleasedGames();
-        Task<List<GamesIGDBViewModel>> MostAnticipatedGames();
         Task<List<GamesIGDBViewModel>> SearchByName(string name);
-        Task<List<GamesIGDBViewModel>> SearchByPlatform(string platformSearch);
+        Task<PlatformDetailsViewModel> ReturnPlatformDetails(int id);
         Task<List<GamesIGDBViewModel>> SearchByGenre(string searchByGenre);
-        Task<List<PlatformsViewModel>> ReturnAllPlatform();
-        Task<PlatformDetailsViewModel> ReturnPlatform(int id);
+        Task<List<GamesIGDBViewModel>> SearchByPlatform(string platformSearch);
     }
 }

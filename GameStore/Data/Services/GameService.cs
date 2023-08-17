@@ -8,6 +8,8 @@
     using System.Collections.Generic;
     using System;
     using IGDB.Models;
+    using System.Linq;
+    using GameStore.Models.IGDB;
 
     public class GameService : IGameService
     {
@@ -458,48 +460,25 @@
         {
             var igdb = new IGDBClient("dhs4qgav57pw3ry6ts1dhfgn5t33c0", "15yjgjhviddv2qppk5h7911ko33pbd");
 
-            //var igdbInfo = await igdb.QueryAsync<PlatformsViewModel>(IGDBClient.Endpoints.Games, query: $"fields *; where genres.name; limit 5;");
-            //var games = igdbInfo.ToList();
+            var igdbInfo = await igdb.QueryAsync<PlatformsViewModel>(IGDBClient.Endpoints.Platforms, query: $"fields *; limit 25;");
 
-            //for (int i = 0; i < games.Count; i++)
-            //{
-            //    var game = games[i];
-            //    var arrCover = game.Cover;
-            //    var arrScreenshots = game.Screenshots;
-            //    var arrGenres = game.Genres;
-            //    var arrPlatforms = game.Platforms;
+            var platforms = igdbInfo.ToList();
 
-            //    int rating = Convert.ToInt32(game.Rating);
-            //    game.Rating = rating;
+            for (int i = 0; i < platforms.Count; i++)
+            {
+                if (platforms[i].PlatformLogo == null)
+                {
+                    continue;
+                }
+                    var platformLogos = await igdb.QueryAsync<GameStore.Models.IGDB.PlatformLogo>(IGDBClient.Endpoints.PlatformLogos, query: $"fields *; where id = ({ platforms[i].PlatformLogo });");
+                    string imageId = platformLogos[0].ImageId;
+                    platforms[i].PlatformLogoInfo.Id = imageId;
+            }
 
-            //    if (arrCover == null ||
-            //        arrScreenshots.Count == 0 ||
-            //        arrGenres.Count == 0 ||
-            //        arrPlatforms.Count == 0)
-            //    {
-            //        games.Remove(game);
-            //        i--;
-            //    }
-            //    else
-            //    {
-            //        var cover = await igdb.QueryAsync<IGDBCoverDetails>(IGDBClient.Endpoints.Covers, query: $"fields *; where id = ({string.Join(", ", game.Cover)});");
-            //        var genres = await igdb.QueryAsync<IGDBGenre>(IGDBClient.Endpoints.Genres, query: $"fields name; where id = ({string.Join(", ", game.Genres)});");
-            //        var platform = await igdb.QueryAsync<IGDBPlatformsDetails>(IGDBClient.Endpoints.Platforms, query: $"fields name, url; where id = ({string.Join(", ", game.Platforms)});");
-            //        var releaseDate2 = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where id = ({string.Join(", ", game.ReleaseDates)});");
-
-
-            //        game.CoverUrl = cover[0];
-            //        game.GenresInfo.AddRange(genres);
-            //        game.PlatformsInfo.AddRange(platform);
-            //        game.ReleaseDateInfo.AddRange(releaseDate2);
-            //    }
-            //}
-
-            // return games;
-            return new List<PlatformsViewModel>();
+            return platforms;
         }
 
-        public async Task<PlatformDetailsViewModel> ReturnPlatform(int id)
+        public async Task<PlatformDetailsViewModel> ReturnPlatformDetails(int id)
         {
             return new PlatformDetailsViewModel() { Id = 0, Name = "QWER", Description = "QWESADSAD"};
         }

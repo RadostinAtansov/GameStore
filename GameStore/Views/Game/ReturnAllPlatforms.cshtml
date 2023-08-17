@@ -16,109 +16,17 @@
 </head>
 <body>
     <div class="container">
-        <div class="platform">
-            <img src="~/images/8.jpg" />
-            <div class="side-text">
-                <h2><a asp-controller="Game" asp-action="ReturnPlatform" asp-route-id="" >Name Platform</a></h2>
-                <p>Most recent version:</p>
-                <p>22nd of February, 2023</p>
+        @foreach (var platform in Model)
+        {
+            <div class="platform">
+                <img src="//images.igdb.com/igdb/image/upload/t_cover_small/@(platform.PlatformLogoInfo.Id).png" alt="No logo">
+                <div class="side-text">
+                    <h2><a asp-controller="Game" asp-action="DetailsPlatform" asp-route-id="@platform.Id">@platform.Name</a></h2>
+                    <p>Last Updated at:</p>
+                    <p>@platform.UpdatedAt.Value.ToString("yyyy-MM-dd")</p>
+                </div>
             </div>
-        </div>
-        <div class="platform">
-            <img src="~/images/8.jpg" />
-            <div class="side-text">
-                <h2><a href="#">Name Platform</a></h2>
-                <p>Most recent version:</p>
-                <p>22nd of February, 2023</p>
-            </div>
-        </div><div class="platform">
-            <img src="~/images/8.jpg" />
-            <div class="side-text">
-                <h2><a href="#">Name Platform</a></h2>
-                <p>Most recent version:</p>
-                <p>22nd of February, 2023</p>
-            </div>
-        </div><div class="platform">
-            <img src="~/images/8.jpg" />
-            <div class="side-text">
-                <h2><a href="#">Name Platform</a></h2>
-                <p>Most recent version:</p>
-                <p>22nd of February, 2023</p>
-            </div>
-        </div><div class="platform">
-            <img src="~/images/8.jpg" />
-            <div class="side-text">
-                <h2><a href="#">Name Platform</a></h2>
-                <p>Most recent version:</p>
-                <p>22nd of February, 2023</p>
-            </div>
-        </div><div class="platform">
-            <img src="~/images/8.jpg" />
-            <div class="side-text">
-                <h2><a href="#">Name Platform</a></h2>
-                <p>Most recent version:</p>
-                <p>22nd of February, 2023</p>
-            </div>
-        </div>
-        <div class="platform">
-            <img src="~/images/8.jpg" />
-            <div class="side-text">
-                <h2><a href="#">Name Platform</a></h2>
-                <p>Most recent version:</p>
-                <p>22nd of February, 2023</p>
-            </div>
-        </div>
-        <div class="platform">
-            <img src="~/images/8.jpg" />
-            <div class="side-text">
-                <h2><a href="#">Name Platform</a></h2>
-                <p>Most recent version:</p>
-                <p>22nd of February, 2023</p>
-            </div>
-        </div><div class="platform">
-            <img src="~/images/8.jpg" />
-            <div class="side-text">
-                <h2><a href="#">Name Platform</a></h2>
-                <p>Most recent version:</p>
-                <p>22nd of February, 2023</p>
-            </div>
-        </div><div class="platform">
-            <img src="~/images/8.jpg" />
-            <div class="side-text">
-                <h2><a href="#">Name Platform</a></h2>
-                <p>Most recent version:</p>
-                <p>22nd of February, 2023</p>
-            </div>
-        </div><div class="platform">
-            <img src="~/images/8.jpg" />
-            <div class="side-text">
-                <h2><a href="#">Name Platform</a></h2>
-                <p>Most recent version:</p>
-                <p>22nd of February, 2023</p>
-            </div>
-        </div><div class="platform">
-            <img src="~/images/8.jpg" />
-            <div class="side-text">
-                <h2><a href="#">Name Platform</a></h2>
-                <p>Most recent version:</p>
-                <p>22nd of February, 2023</p>
-            </div>
-        </div><div class="platform">
-            <img src="~/images/8.jpg" />
-            <div class="side-text">
-                <h2><a href="#">Name Platform</a></h2>
-                <p>Most recent version:</p>
-                <p>22nd of February, 2023</p>
-            </div>
-        </div><div class="platform">
-            <img src="~/images/8.jpg" />
-            <div class="side-text">
-                <h2><a href="#">Name Platform</a></h2>
-                <p>Most recent version:</p>
-                <p>22nd of February, 2023</p>
-            </div>
-        </div>
-        
+        }
     </div>
 
 </body>

@@ -18,6 +18,12 @@
             return View();
         }
 
+        [HttpGet]
+        public async Task<IActionResult> DetailsPlatform()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddGame(AddGameViewModel game)
         {
@@ -32,14 +38,14 @@
         [HttpGet]
         public async Task<IActionResult> ReturnAllPlatforms()
         {
-            var allGames = await _gameService.ReturnAllPlatform();
-            return View(allGames);
+            var allPlatforms = await _gameService.ReturnAllPlatform();
+            return View(allPlatforms);
         }
 
         [HttpGet]
         public async Task<IActionResult> ReturnPlatform(int id)
         {
-            var platform = await _gameService.ReturnPlatform(id);
+            var platform = await _gameService.ReturnPlatformDetails(id);
             return View("DetailsPlatform", platform);
         }
 

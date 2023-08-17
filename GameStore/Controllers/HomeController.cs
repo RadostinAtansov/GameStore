@@ -1,7 +1,7 @@
-﻿using GameStore.Data.Services.Interfaces;
-using GameStore.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using GameStore.Models;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
+using GameStore.Data.Services.Interfaces;
 
 namespace GameStore.Controllers
 {
@@ -14,6 +14,18 @@ namespace GameStore.Controllers
         {
             _homeService = homeService;
             _logger = logger;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Register()
+        {          
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Login()
+        {
+            return View();
         }
 
         [HttpGet]

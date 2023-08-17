@@ -24,7 +24,7 @@
             var dt1 = dateTime1.ToUnixTimeSeconds();
             var dt2 = dateTime2.ToUnixTimeSeconds();
 
-            var releaseDate = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where date > {dt1} & date < {dt2}; limit 9;");
+            var releaseDate = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where date > {dt1} & date < {dt2}; limit 20;");
 
             var gamesId = new List<int>();
 
@@ -77,7 +77,7 @@
         {
             var igdb = new IGDBClient("dhs4qgav57pw3ry6ts1dhfgn5t33c0", "15yjgjhviddv2qppk5h7911ko33pbd");
 
-            var igdbInfo = await igdb.QueryAsync<HomePageViewModel>(IGDBClient.Endpoints.Games, query: "fields name, cover, genres, rating; where rating > 99; limit 8;");
+            var igdbInfo = await igdb.QueryAsync<HomePageViewModel>(IGDBClient.Endpoints.Games, query: "fields name, cover, genres, rating; where rating > 99; limit 20;");
 
             var games = igdbInfo.ToList();
 
@@ -121,7 +121,7 @@
 
             var dt2 = dateTime2.ToUnixTimeSeconds();
 
-            var releaseDate = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where date < {dt1} & date > {dt2}; limit 12;");
+            var releaseDate = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where date < {dt1} & date > {dt2}; limit 20;");
 
             var gamesId = new List<int>();
 
@@ -182,7 +182,7 @@
 
             var dt2 = dateTime2.ToUnixTimeSeconds();
 
-            var releaseDate = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where date > {dt2}; limit 9;");
+            var releaseDate = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where date > {dt2}; limit 20;");
 
             var gamesId = new List<int>();
 
@@ -243,7 +243,7 @@
 
             var dt2 = dateTime2.ToUnixTimeSeconds();
 
-            var releaseDate = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where date < {dt1} & date > {dt2}; limit 12;");
+            var releaseDate = await igdb.QueryAsync<IGDBReleaseDate>(IGDBClient.Endpoints.ReleaseDates, query: $"fields *; where date < {dt1} & date > {dt2}; limit 20;");
 
             var gamesId = new List<int>();
 
@@ -290,6 +290,11 @@
             }
 
             return games;
+        }
+
+        public async Task Register()
+        {
+            throw new NotImplementedException();
         }
     }
 }
