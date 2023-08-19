@@ -6,44 +6,90 @@
 
 @*<h1>Details</h1>*@
 
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="~/css/details.css" />
+        <link rel="stylesheet" href="~/css/.css" />
     </head>
     <body>
         <main>
-            <div class="info-game">
-                <h1>Name of the game</h1>
-                <p>Genre:</p>
-                <p>Platforms:</p>
-                <p>Editions:<a>Link</a></p>
-                <p>Desciption:</p>
-                <p>Socials: steam, GOG, Twitch, Instagram</p>
-                <p>IGDB ID:</p>
-                <p>Release Dates:</p>
-                <p>Developers:</p>
-                <p>Publisher:</p>
-                <p>Game Modes:</p>
-                <p>Themes:</p>
-                <p>Series:</p>
-                <p>Supported Languages:</p>
-                <p>Releated Lists: Many games</p>
-                <p>Age Rating:</p>
-                <p>Other:</p>
-                <p>Last Updated:</p>
-            </div>
-            <div class="rotateSlider">
-                <span style="--i:1"><img src="~/images/1.jpg" alt="" /></span>
-                <span style="--i:2"><img src="~/images/2.jpg" alt="" /></span>
-                <span style="--i:3"><img src="~/images/3.jpg" alt="" /></span>
-                <span style="--i:4"><img src="~/images/4.jpg" alt="" /></span>
-                <span style="--i:5"><img src="~/images/5.jpg" alt="" /></span>
-                <span style="--i:6"><img src="~/images/6.jpg" alt="" /></span>
-                <span style="--i:7"><img src="~/images/7.jpg" alt="" /></span>
-                <span style="--i:8"><img src="~/images/8.jpg" alt="" /></span>
-            </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Game DETAILS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <strong>IGDB ID:</strong>
+                        @Model.Id
+                    </td>
+                </tr>
+                <tr>
+                    <td> 
+                        <strong>NAME:</strong>
+                        @Model.Name
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>GENRES:</strong>
+                        @foreach (var genre in Model.GenresInfo)
+                        {
+                            <br />
+                            @genre.Name
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>PLATFORMS:</strong>
+                        @foreach (var platform in Model.PlatformsInfo)
+                        {
+                            <br />
+                            @platform.Name
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>STORY:</strong>
+                        @Model.Summary
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Socials:</strong>
+                        @foreach (var webSocial in Model.WebsitesInfo)
+                        {
+                            <br />
+                            @webSocial.Category
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>RELEASE DATE:</strong>
+                        @Model.ReleaseDatesInfo[0].Date
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>LAST UPDATE:</strong>
+                        @Model.UpdatedAt
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @foreach (var imageId in Model.ScreenshotsInfo)
+                        {
+                            <img src="//images.igdb.com/igdb/image/upload/t_cover_big/@(imageId).jpg" alt="Tranding">
+                        }
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         </main>
         
     </body>

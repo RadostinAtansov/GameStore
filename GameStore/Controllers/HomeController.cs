@@ -35,7 +35,6 @@ namespace GameStore.Controllers
             return PartialView("_RecentlyReleasedPartial", games);
         }
 
-
         [HttpGet]
         public async Task<IActionResult> RenderMostAnticipatedGames()
         {
@@ -61,7 +60,6 @@ namespace GameStore.Controllers
         public async Task<IActionResult> Index()
         {
             var games = await _homeService.ReturnInfoFromIGDB();
-
             return View(games);
         }
 

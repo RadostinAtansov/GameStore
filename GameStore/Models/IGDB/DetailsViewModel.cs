@@ -1,4 +1,5 @@
-﻿using IGDB.Models;
+﻿using IGDB;
+using IGDB.Models;
 using System.ComponentModel;
 
 namespace GameStore.Models.IGDB
@@ -11,19 +12,39 @@ namespace GameStore.Models.IGDB
 
         public string Summary { get; set; }
 
-        public List<int>? Screenshots = new();
-        public List<IGDBImagesDetails>? Images = new();
+        public int Follows { get; set; }
+
+        public int Hypes { get; set; }
+
+        public double Rating { get; set; }
+
+        public GameStatus Status { get; set; }
+
+        public string Storyline { get; set; }
+
+        public DateTimeOffset UpdatedAt { get; set; }
+
+        public string Url { get; set; }
+
+        public DateTimeOffset FirstReleaseDate { get; set; }
+
+        public List<int> GameEngines = new();
+        public List<IGDBGameEngine> GameEnginesInfo = new();
+
+        public List<int> Screenshots = new();
+        public List<string> ScreenshotsInfo = new();
 
         public List<int> GameModes = new();
         public List<IGDBGameModeDetails> GameModesInfo = new();
 
         public int? Cover { get; set; }
-        public IGDBCoverDetails? CoverInfo { get; set; }
+        public IGDBCoverDetails CoverInfo { get; set; }
 
         public List<int> Genres = new();
         public List<IGDBGenreDetails> GenresInfo = new();
 
-        public List<int> MultiplayerModes = new();
+        public List<int> PlayerPerspectives { get; set; }
+        public List<IGDBPlayerePerspective> PlayerPerspectiveInfo { get; set; }
 
         public List<int> Platforms = new();
         public List<IGDBPlatformsDetails> PlatformsInfo = new();
@@ -32,17 +53,37 @@ namespace GameStore.Models.IGDB
         public List<IGDBWebSiteDetails> WebsitesInfo = new();
 
         public List<int> Videos = new();
+        public List<IGDBVideosDetails> VideosInfo = new();
 
         public List<int> ReleaseDates = new();
+        public List<IGDBReleaseDate> ReleaseDatesInfo = new();
+    }
 
+    public class IGDBPlayerePerspective
+    {
+        public string Name { get; set; }
+    }
 
-        public List<int> GameEngines = new();
+    public class IGDBGameEngine
+    {
+        public string Name { get; set; }
+    }
+
+    public enum GameStatus
+    {
+        Released = 0,
+        Alpha = 2,
+        Beta = 3,
+        EarlyAccess = 4,
+        Offline = 5,
+        Cancelled = 6,
+        Rumored = 7,
+        Delisted = 8
     }
 
     public class IGDBImagesDetails
     {
-        [DisplayName("Screenshots")]
-        public string Url { get; set; }
+        public string imageId { get; set; }
     }
 
     public class IGDBEngineDetails
@@ -73,7 +114,7 @@ namespace GameStore.Models.IGDB
 
     public class IGDBVideosDetails
     {
-        public string Url { get; set; }
+        public string VideoId { get; set; }
     }
 
     public class IGDBReleaseDateDetails
