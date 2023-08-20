@@ -21,7 +21,7 @@
             <div class="platform">
                 <img src="//images.igdb.com/igdb/image/upload/t_cover_small/@(platform.PlatformLogoInfo.Id).png" alt="No logo">
                 <div class="side-text">
-                    <h2><a asp-controller="Game" asp-action="DetailsPlatform" asp-route-id="@platform.Id">@platform.Name</a></h2>
+                    <h2><a asp-controller="Game" asp-action="ReturnPlatform" asp-route-id="@platform.Id">@platform.Name</a></h2>
                     <p>Last Updated at:</p>
                     <p>@platform.UpdatedAt.Value.ToString("yyyy-MM-dd")</p>
                 </div>

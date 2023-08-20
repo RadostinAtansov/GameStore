@@ -10,6 +10,7 @@
     using IGDB.Models;
     using System.Linq;
     using GameStore.Models.IGDB;
+    using GameStore.Data.Models;
 
     public class GameService : IGameService
     {
@@ -500,7 +501,33 @@
 
         public async Task<PlatformDetailsViewModel> ReturnPlatformDetails(int id)
         {
-            return new PlatformDetailsViewModel() { Id = 0, Name = "QWER", Description = "QWESADSAD"};
+            var igdb = new IGDBClient("dhs4qgav57pw3ry6ts1dhfgn5t33c0", "15yjgjhviddv2qppk5h7911ko33pbd");
+
+            var igdbInfo = await igdb.QueryAsync<PlatformDetailsViewModel>(IGDBClient.Endpoints.Platforms, query: $"fields *; where id = { id };");
+
+             var platforms = igdbInfo.FirstOrDefault();
+
+            if (igdbInfo[0].PlatformFamily != 0)
+            {
+                var platformFamilyIGDB = await igdb.QueryAsync<PlatformFamilyViewModel>(IGDBClient.Endpoints.PlatformFamilies, query: $"fields *; where id = { igdbInfo[0].PlatformFamily };");
+                platforms.PlatformFamilyInfo = platformFamilyIGDB[0].ToString();
+            }
+
+
+            if (igdbInfo[0].PlatformLogo != null)
+            {
+                var platformLogoIGDB = await igdb.QueryAsync<PlatformLogoViewModel>(IGDBClient.Endpoints.PlatformLogos, query: $"fields *; where id = {igdbInfo[0].PlatformLogo};");
+                platforms.PlatformLogoImageId = platformLogoIGDB[0].imageId;
+            }
+
+            if (igdbInfo[0].Versions.Count != 0)
+            {
+                var platformLogoIGDB = await igdb.QueryAsync<VersionViewModel>(IGDBClient.Endpoints.PlatformVersions, query: $"fields *; where id = " +
+                    $"({string.Join(", ", igdbInfo[0].Versions)});");
+                platforms.PlatformVersionSummary = platformLogoIGDB[0].Summary;
+            }
+
+            return platforms;
         }
 
         public Task RemoveGame(AddGameViewModel game)

@@ -11,21 +11,33 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
         <body>
-            <h1>Platform Name</h1>
+            <h1>@Model.Name</h1>
             <div id="img-summary">
-                <img src="~/images/1.jpg"/>
+                <img src="//images.igdb.com/igdb/image/upload/t_logo_med/@(Model.PlatformLogoImageId).jpg" alt="Tranding">
                 <div class="btn-summary">
                 <button> <i class="fa-solid fa-gamepad"></i> All Games</button>
                 <button> <i class="fa-solid fa-star"></i> Best Games</button>
-                <p>Summary:</p>
+                <p>Summary:
+                    <strong> @Model.PlatformVersionSummary</strong>
+                </p>
                 </div>
             </div>
             <div class="information-platform">
-                <p>Release Dates:</p>
-                <p>Generation:</p>
-                <p>Platform Type:</p>
-                <p>Product Family:</p>
-                <p>Alternative Name:</p>
+                <p>Release Dates:
+                    <strong>@Model.CreatedAt</strong>
+                </p>
+                <p>Generation:
+                    <strong>@Model.Generation</strong>
+                </p>
+                <p>Platform Type:
+                    <strong>@Model.Category</strong>
+                </p>
+                <p>Product Family:
+                    <strong>@Model.PlatformFamilyInfo</strong>
+                </p>
+                <p>Alternative Name:
+                    <strong>@Model.AlternativeName</strong>
+                </p>
             </div>
         </body>
 </html>

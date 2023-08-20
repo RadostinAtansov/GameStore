@@ -18,12 +18,6 @@
             return View();
         }
 
-        [HttpGet]
-        public async Task<IActionResult> DetailsPlatform()
-        {
-            return View();
-        }
-
         [HttpPost]
         public async Task<IActionResult> AddGame(AddGameViewModel game)
         {
