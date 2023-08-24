@@ -1,12 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using GameStore.Models.GameViewModels;
-using GameStore.Models.IGDB;
-namespace GameStore.Data
+﻿namespace GameStore.Data
 {
     using GameStore.Data.Models;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 
-    public class GameStoreDataDbContext : DbContext
+    public class GameStoreDataDbContext : IdentityDbContext<IdentityUser, IdentityRole, string>
     {
 
         public GameStoreDataDbContext(DbContextOptions<GameStoreDataDbContext> options) 
@@ -16,6 +15,8 @@ namespace GameStore.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+            //modelBuilder.Ignore<IdentityUserLogin<string>>();
             //Comments <=> Games many to many
 
             modelBuilder.Entity<GameComments>()
@@ -32,17 +33,17 @@ namespace GameStore.Data
 
             //Games <=> User
 
-            modelBuilder.Entity<UsersGames>()
-                .HasOne(g => g.Game)
-                .WithMany(c => c.Users_Games)
-                .HasForeignKey(c => c.GameId)
-                .OnDelete(DeleteBehavior.Cascade);
+            //modelBuilder.Entity<UsersGames>()
+            //    .HasOne(g => g.Game)
+            //    .WithMany(c => c.Users_Games)
+            //    .HasForeignKey(c => c.GameId)
+            //    .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<UsersGames>()
-                .HasOne(c => c.User)
-                .WithMany(g => g.Games_Users)
-                .HasForeignKey(c => c.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
+            //modelBuilder.Entity<UsersGames>()
+            //    .HasOne(c => c.User)
+            //    .WithMany(g => g.Games_Users)
+            //    .HasForeignKey(c => c.UserId)
+            //    .OnDelete(DeleteBehavior.Cascade);
 
             //Game <=> Statistic many to one
 
@@ -64,9 +65,8 @@ namespace GameStore.Data
         public DbSet<Game> Games { get; set; }
         public DbSet<GameComments> GamesComments { get; set; }
         public DbSet<Statistic> Statistics { get; set; }
-        public DbSet<User> Users { get; set; }
+        //public DbSet<User> Users { get; set; }
         public DbSet<UsersGames> UsersGames { get; set; }
         public DbSet<Image> Images { get; set; }
-        public DbSet<GameStore.Models.IGDB.DetailsViewModel>? DetailsViewModel { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using IGDB.Models;
 using IGDB;
+using Microsoft.EntityFrameworkCore;
 
 namespace GameStore.Models.IGDB
 {
@@ -32,16 +33,19 @@ namespace GameStore.Models.IGDB
         public string PlatformVersionSummary { get; set; }
     }
 
+    [Keyless]
     public class PlatformFamilyViewModel
     {
         public string Name { get; set; }
     }
 
+    [Keyless]
     public class VersionViewModel
     {
         public string Summary { get; set; }
     }
 
+    [Keyless]
     public class PlatformLogoViewModel
     {
         public string imageId { get; set; }

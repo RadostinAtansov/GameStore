@@ -1,11 +1,11 @@
 ﻿    
 namespace GameStore.Models.IGDB
 {
+    using Microsoft.EntityFrameworkCore;
     using System.ComponentModel;
 
     public class GamesIGDBViewModel
     {
-
         public long Id { get; set; }
 
         [DisplayName("Game Name")]
@@ -17,6 +17,7 @@ namespace GameStore.Models.IGDB
         public double? Rating { get; set; }
 
         public List<int> ReleaseDates = new();
+
         public List<IGDBReleaseDate> ReleaseDateInfo = new();
 
         [DisplayName("Desription")]
@@ -30,22 +31,28 @@ namespace GameStore.Models.IGDB
         public List<int> Genres = new();
         public List<IGDBGenre> GenresInfo = new();
 
+
         public List<int> Platforms = new();
         public List<IGDBPlatformsDetails> PlatformsInfo = new();
     }
 
+    [Keyless]
     public class IGDBImages
     {
         public string Url { get; set; }
     }
 
+    [Keyless]
     public class IGDBCoverDetails
     {
+        public int id { get; set; }
+
         public string imageId { get; set; }
 
         public string Url { get; set; }
     }
 
+    [Keyless]
     public class IGDBReleaseDate
     {
         public ReleaseDateRegion? Region { get; set; }

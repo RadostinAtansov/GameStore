@@ -1,4 +1,6 @@
-﻿namespace GameStore.Models.IGDB
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace GameStore.Models.IGDB
 {
 
     public class PlatformsViewModel
@@ -17,6 +19,7 @@
         public DateTimeOffset? UpdatedAt { get; set; }
     }
 
+    [Keyless]
     public class PlatformLogo
     {
         public string Id { get; set; }

@@ -3,6 +3,7 @@
     using IGDB;
     using GameStore.Models.IGDB;
     using GameStore.Data.Services.Interfaces;
+    using System.Web.Mvc;
 
     public class HomeService : IHomeService
     {
@@ -290,11 +291,6 @@
             }
 
             return games;
-        }
-
-        public async Task Register()
-        {
-            throw new NotImplementedException();
         }
     }
 }

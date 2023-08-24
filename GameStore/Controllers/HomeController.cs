@@ -7,25 +7,11 @@ namespace GameStore.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly IHomeService _homeService;
 
-        public HomeController(ILogger<HomeController> logger, IHomeService homeService)
+        public HomeController(IHomeService homeService)
         {
             _homeService = homeService;
-            _logger = logger;
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> Register()
-        {          
-            return View();
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> Login()
-        {
-            return View();
         }
 
         [HttpGet]

@@ -1,9 +1,10 @@
-﻿using IGDB;
-using IGDB.Models;
-using System.ComponentModel;
-
+﻿
 namespace GameStore.Models.IGDB
 {
+    using IGDB;
+    using Microsoft.EntityFrameworkCore;
+    using System.ComponentModel;
+
     public class DetailsViewModel
     {
         public int Id { get; set; }
@@ -44,7 +45,7 @@ namespace GameStore.Models.IGDB
         public List<IGDBGenreDetails> GenresInfo = new();
 
         public List<int> PlayerPerspectives { get; set; }
-        public List<IGDBPlayerePerspective> PlayerPerspectiveInfo { get; set; }
+        public List<IGDBPlayerPerspective> PlayerPerspectiveInfo { get; set; }
 
         public List<int> Platforms = new();
         public List<IGDBPlatformsDetails> PlatformsInfo = new();
@@ -59,11 +60,14 @@ namespace GameStore.Models.IGDB
         public List<IGDBReleaseDate> ReleaseDatesInfo = new();
     }
 
-    public class IGDBPlayerePerspective
+    [Keyless]
+    public class IGDBPlayerPerspective
     {
+        public int Id { get; set; }
         public string Name { get; set; }
     }
 
+    [Keyless]
     public class IGDBGameEngine
     {
         public string Name { get; set; }
@@ -81,16 +85,19 @@ namespace GameStore.Models.IGDB
         Delisted = 8
     }
 
+    [Keyless]
     public class IGDBImagesDetails
     {
         public string imageId { get; set; }
     }
 
+    [Keyless]
     public class IGDBEngineDetails
     {
         public string Name { get; set; }
     }
 
+    [Keyless]
     public class IGDBGameModeDetails
     {
         public string Name { get; set; }
@@ -98,6 +105,7 @@ namespace GameStore.Models.IGDB
         public string Url { get; set; }
     }
 
+    [Keyless]
     public class IGDBGenreDetails
     {
         public string Name { get; set; }
@@ -105,6 +113,7 @@ namespace GameStore.Models.IGDB
         public string Url { get; set; }
     }
 
+    [Keyless]
     public class IGDBPlatformsDetails
     {
         public string Name { get; set; }
@@ -112,16 +121,19 @@ namespace GameStore.Models.IGDB
         public string Url { get; set; }
     }
 
+    [Keyless]
     public class IGDBVideosDetails
     {
         public string VideoId { get; set; }
     }
 
+    [Keyless]
     public class IGDBReleaseDateDetails
     {
         public string Url { get; set; }
     }
 
+    [Keyless]
     public class IGDBWebSiteDetails
     {
         public WebsiteCategory Category { get; set; }

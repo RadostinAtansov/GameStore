@@ -1,4 +1,6 @@
-﻿namespace GameStore.Models.IGDB
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace GameStore.Models.IGDB
 {
     public class HomePageViewModel
     {
@@ -16,6 +18,7 @@
 
     }
 
+    [Keyless]
     public class IGDBGenre
     {
         public string Name { get; set; }

@@ -1,9 +1,10 @@
 using GameStore.Data;
+using GameStore.Config;
 using GameStore.Data.Services;
-using GameStore.Data.Services.Interfaces;
-
 using Microsoft.EntityFrameworkCore;
-using RestEase.HttpClientFactory;
+using GameStore.Data.Services.Interfaces;
+using Microsoft.AspNetCore.Identity;
+using GameStore.Models.UserModels;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,10 +14,29 @@ builder.Services.AddDbContext<GameStoreDataDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<GameStoreDataDbContext>();
+
+//builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+//    .AddEntityFrameworkStores<GameStoreDataDbContext>();
+
+//builder.Services.AddDefaultIdentity<UserViewModel>(options => options.SignIn.RequireConfirmedAccount = true)
+//    .AddEntityFrameworkStores<GameStoreDataDbContext>();
+
+//builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+//    .AddEntityFrameworkStores<GameStoreDataDbContext>()
+//    .AddDefaultTokenProviders();
+//builder.Services.AddDefaultIdentity<IdentityUser>().AddRoles<IdentityRole>();
 
 builder.Services.AddTransient<IGameService, GameService>();
 builder.Services.AddTransient<IHomeService, HomeService>();
+
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection(nameof(AppSettings)));
+
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 var app = builder.Build();
 
@@ -32,11 +52,12 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();;
 
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+app.MapRazorPages();
 app.Run();
