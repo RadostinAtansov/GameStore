@@ -1,10 +1,13 @@
 using GameStore.Data;
 using GameStore.Config;
-using GameStore.Data.Services;
 using Microsoft.EntityFrameworkCore;
-using GameStore.Data.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
-using GameStore.Models.UserModels;
+using GameStore.Data.Services;
+using GameStore.Data.Services.Interfaces;
+using GameStore.Data.Models.Services;
+using GameStore.Data.Models;
+using Microsoft.Identity.Client;
+//using GameStore.Models.UserModels;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,19 +21,10 @@ builder.Services.AddDbContext<GameStoreDataDbContext>(options =>
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<GameStoreDataDbContext>();
 
-//builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-//    .AddEntityFrameworkStores<GameStoreDataDbContext>();
-
-//builder.Services.AddDefaultIdentity<UserViewModel>(options => options.SignIn.RequireConfirmedAccount = true)
-//    .AddEntityFrameworkStores<GameStoreDataDbContext>();
-
-//builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-//    .AddEntityFrameworkStores<GameStoreDataDbContext>()
-//    .AddDefaultTokenProviders();
-//builder.Services.AddDefaultIdentity<IdentityUser>().AddRoles<IdentityRole>();
-
 builder.Services.AddTransient<IGameService, GameService>();
 builder.Services.AddTransient<IHomeService, HomeService>();
+builder.Services.AddTransient<IAccountService, AccountService>();
+
 
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection(nameof(AppSettings)));
 

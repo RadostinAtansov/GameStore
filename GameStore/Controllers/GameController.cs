@@ -18,17 +18,6 @@
             return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddGame(AddGameViewModel game)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(game);
-            }
-            await _gameService.AddGame(game);
-            return RedirectToAction("Index");
-        }
-
         [HttpGet]
         public async Task<IActionResult> ReturnAllPlatforms()
         {

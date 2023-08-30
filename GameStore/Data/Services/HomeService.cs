@@ -2,8 +2,8 @@
 {
     using IGDB;
     using GameStore.Models.IGDB;
-    using GameStore.Data.Services.Interfaces;
     using System.Web.Mvc;
+    using GameStore.Data.Services.Interfaces;
 
     public class HomeService : IHomeService
     {

@@ -30,6 +30,7 @@ namespace GameStore.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -127,8 +128,8 @@ namespace GameStore.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
@@ -172,8 +173,8 @@ namespace GameStore.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -193,13 +194,14 @@ namespace GameStore.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    Category = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Company = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    VideoURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    StatisticId = table.Column<int>(type: "int", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    GameIdFromIGDB = table.Column<int>(type: "int", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
+                    Category = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Company = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    VideoURL = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StatisticId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -260,18 +262,23 @@ namespace GameStore.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UsersGames",
+                name: "UserGames_GamesUsers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     GameId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UsersGames", x => x.Id);
+                    table.PrimaryKey("PK_UserGames_GamesUsers", x => new { x.UserId, x.GameId });
                     table.ForeignKey(
-                        name: "FK_UsersGames_Games_GameId",
+                        name: "FK_UserGames_GamesUsers_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_UserGames_GamesUsers_Games_GameId",
                         column: x => x.GameId,
                         principalTable: "Games",
                         principalColumn: "Id",
@@ -338,8 +345,8 @@ namespace GameStore.Migrations
                 column: "GameId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UsersGames_GameId",
-                table: "UsersGames",
+                name: "IX_UserGames_GamesUsers_GameId",
+                table: "UserGames_GamesUsers",
                 column: "GameId");
         }
 
@@ -368,16 +375,16 @@ namespace GameStore.Migrations
                 name: "Images");
 
             migrationBuilder.DropTable(
-                name: "UsersGames");
+                name: "UserGames_GamesUsers");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Comments");
 
             migrationBuilder.DropTable(
-                name: "Comments");
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Games");

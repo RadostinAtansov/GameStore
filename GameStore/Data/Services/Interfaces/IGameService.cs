@@ -1,13 +1,9 @@
 ﻿namespace GameStore.Data.Services.Interfaces
 {
-    using GameStore.Models.GameViewModels;
     using GameStore.Models.IGDB;
 
     public interface IGameService
     {
-        Task AddGame(AddGameViewModel game);
-        Task RemoveGame(AddGameViewModel game);
-        Task UpdateGame(AddGameViewModel game);
         Task<DetailsViewModel> GetDetails(int id);
         Task<List<GamesIGDBViewModel>> GetAllGames();
         Task<List<PlatformsViewModel>> ReturnAllPlatform();

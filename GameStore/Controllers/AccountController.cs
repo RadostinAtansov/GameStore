@@ -1,42 +1,64 @@
 ﻿namespace GameStore.Controllers
 {
-    using GameStore.Models.UserModels;
-    using Microsoft.AspNetCore.Identity;
+    using GameStore.Data;
+    using GameStore.Data.Models;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
+    using GameStore.Data.Services.Interfaces;
 
-    [Area("Identity")]
     public class AccountController : Controller
     {
-        //private readonly IAuthorizationUserService _authorizationUserService;
+        private readonly GameStoreDataDbContext _dbContext;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly IAccountService _accountService;
 
-        public AccountController(/*IAuthorizationUserService authorizationUserService,*/
-            SignInManager<IdentityUser> signInManager)
+        public AccountController(
+               GameStoreDataDbContext dbContext, 
+               UserManager<IdentityUser> userManager, 
+               SignInManager<IdentityUser> signInManager,
+               IAccountService accountService)
         {
-            //_authorizationUserService = authorizationUserService;
+            _dbContext = dbContext;
+            _userManager = userManager;
             _signInManager = signInManager;
-        }
-      
-        public async Task<IActionResult> Register()
-        {
-            return View();
+            _accountService = accountService;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Register(UserViewModel register)
-        {  
-            return View();
+        public async Task<IActionResult> AddToWishList(int gameId)
+        {
+            var userNameEmail = User.Identity.Name;
+            
+            var userIdFromDb = await _dbContext.Users.FirstOrDefaultAsync(u => u.UserName == userNameEmail);
+
+            string userIdFromDbToGameUsers = userIdFromDb.Id;
+
+            UserGames_GamesUser ug = new UserGames_GamesUser()
+            {
+                UserId = userIdFromDbToGameUsers,
+                Game = new Game() { GameIdFromIGDB = gameId }
+            };
+
+            await _dbContext.UserGames_GamesUsers.AddAsync(ug);
+            await _dbContext.SaveChangesAsync();
+
+            return RedirectToAction("Index", "Home");
         }
 
-        public async Task<IActionResult> Login()
+        public async Task<IActionResult> RemoveGameFromWish(int id)
         {
-            return View();
+            var userNameEmail = User.Identity.Name;
+
+            await _accountService.RemoveGame(id, userNameEmail);
+            return RedirectToAction("Index", "Home");
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Login(UserViewModel requestUser)
+        public async Task<IActionResult> ShowWishList()
         {
-            return View();
+            var userNameEmail = User.Identity.Name;
+            var wishlist = await _accountService.ShowWishList(userNameEmail);
+            return View(wishlist);
         }
     }
 }

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<GamesIGDBViewModel>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "ReturnAllGames";
+}
+
+<h1 style="text-decoration: solid underline black 4px; text-underline-offset: 0.2em; width:300px;">My Wish List</h1>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/cardReturnAll.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+
+</head>
+<body>
+    <div class="courses-container">
+        @foreach (var game in Model)
+        {
+            <div class="card">
+                <a href="javasscript:void();">
+                    <a type="submit" asp-controller="Game" asp-action="Details" asp-route-id="@game.Id">
+                        <div class="category">@game.GenresInfo[0].Name</div>
+                        <img src="//images.igdb.com/igdb/image/upload/t_cover_big/@(game.CoverUrl.imageId).jpg" alt="Tranding">
+                    </a>
+                        <h2 class="title">@game.Name</h2>
+                        <div class="description">@game.Summary</div>
+                        <div class="info">
+                            <div class="platforms">
+                                @foreach (var platform in game.PlatformsInfo)
+                                {
+                                    @platform.Name
+                                    <br />
+                                }
+                            <button>
+                                <a type="submit" asp-controller="Account" asp-action="RemoveGameFromWish" asp-route-id="@game.Id"> Remove From List </a>
+                             </button>
+                            </div>
+                            <div class="duration">
+                                <div class="time-icon">@game.Rating</div>
+                            </div>
+                        </div>
+                </a>
+            </div>
+        }
+    </div>
+</body>
+</html>
