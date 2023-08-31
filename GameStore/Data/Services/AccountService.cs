@@ -98,6 +98,11 @@
 
             //var model = IGDB.Models.Game();
 
+            if (gameIds.Count == 0)
+            {
+                return new List<GamesIGDBViewModel>();
+            }
+
             var igdbInfo = await igdb.QueryAsync<GamesIGDBViewModel>(IGDBClient.Endpoints.Games, query: $"fields *; where id = ({string.Join(",", gameIds)});");
 
             var games = igdbInfo.ToList();

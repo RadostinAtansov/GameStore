@@ -1,10 +1,11 @@
-﻿using GameStore.Models;
-using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using GameStore.Data.Services.Interfaces;
-
-namespace GameStore.Controllers
+﻿namespace GameStore.Controllers
 {
+    using GameStore.Models;
+    using System.Diagnostics;
+    using Microsoft.AspNetCore.Mvc;
+    using GameStore.Data.Services.Interfaces;
+    using Microsoft.AspNetCore.Diagnostics;
+
     public class HomeController : Controller
     {
         private readonly IHomeService _homeService;
@@ -12,6 +13,13 @@ namespace GameStore.Controllers
         public HomeController(IHomeService homeService)
         {
             _homeService = homeService;
+        }
+
+        [Route("/Home/HandleError/{code:int}")]
+        public IActionResult HandleError(int code)
+        {
+            ViewData["ErrorMessage"] = $"Error occurred. The ErrorCode is: {code}";
+            return View("~/Views/Shared/HandleError.cshtml");
         }
 
         [HttpGet]
@@ -54,10 +62,10 @@ namespace GameStore.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        //public IActionResult Error()
+        //{
+        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        //}
     }
 }
