@@ -3,12 +3,9 @@
     using IGDB;
     using System;
     using AutoMapper;
-    using IGDB.Models;
     using System.Linq;
     using GameStore.Models.IGDB;
     using System.Collections.Generic;
-    using GameStore.Models.GameViewModels;
-    using GameStore.Data.Models.Services;
     using GameStore.Data.Services.Interfaces;
 
     public class GameService : IGameService
@@ -24,7 +21,7 @@
 
         public async Task<List<GamesIGDBViewModel>> GetAllGames()
         {
-            var igdb = new IGDBClient("dhs4qgav57pw3ry6ts1dhfgn5t33c0", "15yjgjhviddv2qppk5h7911ko33pbd"); // <===> fix /page not found
+            var igdb = new IGDBClient("dhs4qgav57pw3ry6ts1dhfgn5t33c0", "15yjgjhviddv2qppk5h7911ko33pbd");
 
             //var model = IGDB.Models.Game();
 

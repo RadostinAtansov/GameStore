@@ -49,7 +49,6 @@
         public async Task<IActionResult> RemoveGameFromWish(int id)
         {
             var userNameEmail = User.Identity.Name;
-
             await _accountService.RemoveGame(id, userNameEmail);
             return RedirectToAction("Index", "Home");
         }

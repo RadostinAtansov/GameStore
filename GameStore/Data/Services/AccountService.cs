@@ -61,9 +61,6 @@
                 UserId = loggedUser.Id,
             };
 
-            //_dbContext.Games.Remove(game);
-            //_dbContext.SaveChanges();
-
             _dbContext.UserGames_GamesUsers.Remove(uggu);
             _dbContext.SaveChanges();
 
@@ -94,9 +91,7 @@
                 gameIds.Add(gamesThisUserFromDB[i].GameIdFromIGDB);
             }
 
-            var igdb = new IGDBClient("dhs4qgav57pw3ry6ts1dhfgn5t33c0", "15yjgjhviddv2qppk5h7911ko33pbd"); // <===> fix /page not found
-
-            //var model = IGDB.Models.Game();
+            var igdb = new IGDBClient("dhs4qgav57pw3ry6ts1dhfgn5t33c0", "15yjgjhviddv2qppk5h7911ko33pbd");
 
             if (gameIds.Count == 0)
             {
